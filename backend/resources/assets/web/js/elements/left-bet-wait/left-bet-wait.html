@@ -1,0 +1,155 @@
+  <!-- BET -->
+  <!-- BetListMini Session -->
+  <div ng-show="waitSetting.type == 'betList'" id="div_BetListMini">
+  <div title="Bet List (Mini)" class="leftBoxTitle">
+    <span class="icon-arrow"></span>
+    <div title="Refresh" ng-click="loadBets()" ng-class="{'disable': waitSetting.loading}" name="btnRefresh_BetListMini" class="btnIcon mark right" id="BetListMiniRefreshIcon">
+      <span class="icon-refresh"></span>
+    </div>
+    <span style="width: 130px;" class="text-ellipsis left titleTxt">Đang chạy</span>
+  </div>
+  <div class="leftBoxbody">
+    <div class="boxbg">
+      <div class="reSet">
+        <a title="Waiting Bet" class="button" ng-click="openBetList('waitingBets')" style="cursor: pointer"><span>Đang chờ</span>
+        </a>
+        <a title="Void" class="button" ng-click="openBetList('voidTicket')" ng-class="{'disable': waitSetting.loading}" style="cursor: pointer"><span>Hủy</span>
+        </a>
+      </div>
+      <span id="BetListMiniContainer">
+        <div class="BetInfo" left-bet-item value="value" ng-class-odd="'bgcpelight'" ng-class-even="'bgcpe'" ng-repeat="(key, value) in waitData.betList">
+        </div>
+      </span>
+    </div>
+  </div>
+  <div class="leftBoxFoot"></div>
+</div>
+  <!-- END BetListMini Session -->
+  <!-- WaitingBets Session -->
+  <div ng-show="waitSetting.type == 'waitingBets'" id="div_WaitingBets">
+    <div title="Waiting &amp; Cancelled" class="leftBoxTitle">
+      <span class="icon-arrow"></span>
+      <div title="Refresh" ng-click="loadBets()" name="btnRefresh_WaitingBets" ng-class="{'disable': waitSetting.loading}" class="btnIcon mark right" id="WaitingBetRefreshIcon">
+        <span class="icon-refresh"></span>
+      </div>
+      <span style="width: 130px;" class="text-ellipsis left titleTxt">Đang Chờ &amp; Hủy</span>
+    </div>
+    <div class="leftBoxbody">
+      <div class="boxbg">
+        <div class="reSet" id="account">
+          <a title="Bet List (Mini)" class="button" ng-click="openBetList('betList')" style="cursor: pointer"><span>Đang chạy</span>
+          </a>
+          <a title="Void" class="button" ng-click="openBetList('voidTicket')" style="cursor: pointer"><span>Hủy</span>
+          </a>
+        </div>
+        <span id="WaitingBetsSpan">
+          <div align="center" id="lastrefresh" ng-show="waitData.waitingBets.length && waitSetting.bet_number !== 0">Time : <span id="refresh-time">{{waitSetting.bet_number}}</span>
+          </div>
+          <div align="center" id="checkStatus" ng-show="waitData.waitingBets.length && waitSetting.bet_number === 0">Đang kiểm tra...</div>
+          <div class="BetInfo Odds_Upd void-cache" style="text-decoration: line-through;" left-bet-item value="value" ng-repeat="(key, value) in waitData.voidTicketCaches">
+            <!-- <table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size:10px;text-decoration: line-through!important">
+              <tbody>
+                <tr>
+                  <td colspan="2" class="TextStyle01 ">Bóng đá / {{::value.bet_type}}</td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="TextStyle02 "">{{::value.bet_name}}</td>
+                </tr>
+                <tr>
+                  <td><span class="TextStyle03 "><span class="TextStyle03">{{::value.bet_odd}}</span><span class="TextStyle01">[{{::value.ss}}]</span></span><span class="">@</span><span class="UdrDogOddsClass" ng-class="{'FavOddsClass': value.bet_value < 0}">{{::value.bet_value | numberOdd:2}}</span>
+                  </td>
+                  <td align="right" class="TextStyle01 "><b>{{::value.bet_amount | numberPretty:2}}</b>
+                  </td>
+                </tr>
+                <tr><td colspan="2" class="TextStyle04 "><div>{{::value.home}} -vs- {{::value.away}}</div><div></div></td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="TextStyle06"><div class="left">ID:{{::value.id}}</div>
+                    <div class="right text-ellipsis" style="width:70px; text-align:right; line-height:inherit;" title="Waiting">Cược hủy</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table> -->
+          </div>
+          <div class="BetInfo liveligh" left-bet-item value="value" ng-repeat="(key, value) in waitData.waitingBets">
+            <!-- <table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size:10px;">
+              <tbody>
+                <tr>
+                  <td colspan="2" class="TextStyle01 ">Bóng đá / {{::value.bet_type}}</td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="TextStyle02 "">{{::value.bet_name}}</td>
+                </tr>
+                <tr>
+                  <td><span class="TextStyle03 "><span class="TextStyle03">{{::value.bet_odd}}</span><span class="TextStyle01">[{{::value.ss}}]</span></span><span class="">@</span><span class="UdrDogOddsClass" ng-class="{'FavOddsClass': value.bet_value < 0}">{{::value.bet_value | numberOdd:2}}</span>
+                  </td>
+                  <td align="right" class="TextStyle01 "><b>{{::value.bet_amount| numberPretty:2}}</b>
+                  </td>
+                </tr>
+                <tr><td colspan="2" class="TextStyle04 "><div>{{::value.home}} -vs- {{::value.away}}</div><div></div></td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="TextStyle06"><div class="left">ID:{{::value.id}}</div>
+                    <div class="right text-ellipsis" style="width:70px; text-align:right; line-height:inherit;" title="Waiting">Đang chờ</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table> -->
+          </div>
+          <div align="center" ng-show="!waitData.waitingBets.length">Không có cược chưa xử lý</div>
+        </span>
+      </div>
+    </div>
+    <div class="leftBoxFoot"></div>
+  </div>
+  <!-- End Of WaitingBets Session -->
+  <!-- VoidTicket Session -->
+  <div ng-show="waitSetting.type == 'voidTicket'" id="div_VoidTicket">
+    <div title="Void &amp; Cancelled Bet" class="leftBoxTitle">
+      <span class="icon-arrow"></span>
+      <div title="Refresh" ng-click="loadBets()" ng-class="{'disable': waitSetting.loading}" name="btnRefresh_VoidTicket" class="btnIcon mark right" id="VoidTicketRefreshIcon">
+        <span class="icon-refresh"></span>
+      </div>
+      <span style="width: 130px;" class="text-ellipsis left titleTxt">Hủy</span>
+    </div>
+    <div class="leftBoxbody">
+      <div class="boxbg">
+        <div class="reSet" id="account">
+          <a title="Bet List (Mini)" class="button" ng-click="openBetList('betList')" style="cursor: pointer"><span>Đang chạy</span>
+          </a>
+          <a title="Waiting Bet" class="button" ng-click="openBetList('waitingBets')" style="cursor: pointer"><span>Đang chờ</span>
+          </a>
+        </div>
+        <div class="BetInfo Void" left-bet-item value="value" ng-repeat="(key, value) in waitData.voidTicket">
+            <!-- <table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size:10px;">
+              <tbody>
+                <tr>
+                  <td colspan="2" class="TextStyle01 ">Bóng đá / {{value.bet_type}}</td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="TextStyle02 "">{{::value.bet_name}}</td>
+                </tr>
+                <tr>
+                  <td><span class="TextStyle03 "><span class="TextStyle03">{{::value.bet_odd}}</span><span class="TextStyle01">[{{::value.ss}}]</span></span><span class="">@</span><span class="FavOddsClass">{{::value.bet_value | numberOdd:2}}</span>
+                  </td>
+                  <td align="right" class="TextStyle01 "><b>{{::value.bet_amount | numberPretty:2}}</b>
+                  </td>
+                </tr>
+                <tr><td colspan="2" class="TextStyle04 "><div>{{::value.home}} -vs- {{::value.away}}</div><div></div></td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="TextStyle06"><div class="left">ID:{{::value.id}}</div>
+                    <div class="right text-ellipsis" style="width:70px; text-align:right; line-height:inherit;" title="Waiting">Hủy</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table> -->
+          </div>
+        <span id="VoidTicketSpan" ng-show="!waitData.voidTicket.length">
+          <div align="center">Không Có Tiền Cược Bị Vô Hiệu Lực</div>
+        </span>
+      </div>
+    </div>
+    <div class="leftBoxFoot"></div>
+  </div>
+  <!-- End Of VoidTicket Session -->

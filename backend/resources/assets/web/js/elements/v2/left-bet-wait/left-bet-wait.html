@@ -1,0 +1,63 @@
+<div class="nav-widgetPanel  icon-betList-bets threeColum">
+  <div class="item icon-betList-bets" ng-class="{'active': waitSetting.type == 'betList'}" title="Đang Chạy" ng-click="openBetList('betList')">
+    <span class="itemContent">
+      <span class="text">Đang Chạy</span>
+    </span>
+  </div>
+  <div class="item  icon-betList-waiting" ng-class="{'active': waitSetting.type == 'waitingBets'}" title="Đang Chờ" ng-click="openBetList('waitingBets')">
+    <span class="itemContent">
+      <span class="text">Đang Chờ</span>
+      <div class="alertArea" ng-if="waitData.waitingBets.length"><div class="alert">{{waitData.waitingBets.length}}</div></div>
+    </span>
+  </div>
+  <div class="item  icon-betList-void" ng-class="{'active': waitSetting.type == 'voidTicket'}" title="Hủy" ng-click="openBetList('voidTicket')">
+    <span class="itemContent">
+      <span class="text">Hủy</span>
+    </span>
+  </div>
+</div>
+<div class="mainSection empty" ng-show="waitSetting.type == 'betList' && !waitData.betList.length">
+  <div class="scroll-panel"><div class="scroll-content"><div class="ticketListGroup"><div class="betInfo">Không có thông tin</div></div></div><div class="v-scrollbar-track"><div></div></div></div>
+</div>
+
+<div class="mainSection running" ng-show="waitSetting.type == 'betList'">
+  <div class="scroll-panel">
+    <div class="scroll-content">
+      <div class="ticketListGroup single" left-bet-item-v2 value="value" ng-repeat="(key, value) in waitData.betList">
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="mainSection empty" ng-show="waitSetting.type == 'waitingBets' && !waitData.waitingBets.length && !waitData.voidTicketCaches.length">
+  <div class="scroll-panel"><div class="scroll-content"><div class="ticketListGroup"><div class="betInfo">Không có cược chưa xử lý</div></div></div><div class="v-scrollbar-track"><div></div></div></div>
+</div>
+<div class="mainSection waiting" ng-show="waitSetting.type == 'waitingBets'">
+  <div class="scroll-panel">
+    <div class="scroll-content">
+      <div class="timerArea" ng-show="waitData.waitingBets.length">Giờ:{{waitSetting.bet_number}}</div>
+      <div class="ticketListGroup single reject" left-bet-item-v2 value="value" ng-repeat="(key, value) in waitData.voidTicketCaches">
+        </div>
+      <div class="ticketListGroup single" left-bet-item-v2 value="value" ng-repeat="(key, value) in waitData.waitingBets">
+        </div>
+    </div>
+    <div class="v-scrollbar-track">
+      <div></div>
+    </div>
+  </div>
+</div>
+
+<div class="mainSection empty" ng-show="waitSetting.type == 'voidTicket' && !waitData.voidTicket.length">
+  <div class="scroll-panel"><div class="scroll-content"><div class="ticketListGroup"><div class="betInfo">Không Có Tiền Cược Bị Vô Hiệu Lực</div></div></div><div class="v-scrollbar-track"><div></div></div></div></div>
+
+<div class="mainSection waiting" ng-show="waitSetting.type == 'voidTicket'">
+  <div class="scroll-panel">
+    <div class="scroll-content">
+      <div class="ticketListGroup single reject" left-bet-item-v2 value="value" ng-repeat="(key, value) in waitData.voidTicket">
+        </div>
+    </div>
+    <div class="v-scrollbar-track">
+      <div></div>
+    </div>
+  </div>
+</div>

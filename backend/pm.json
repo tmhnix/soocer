@@ -1,0 +1,40 @@
+{
+  "apps" : [
+  {
+      "name": "crawl1",
+      "script": "nodejs",
+      "script"       : "crawl/",
+      "kill_timeout" : 60000,
+      "instances": 1,
+      "exec_mode": "fork",
+      "env": {
+        "NODE_ENV": "production",
+        "NOTE": "note1"
+      }
+    },
+    {
+      "name": "crawl2",
+      "script": "nodejs",
+      "script"       : "crawl/",
+      "kill_timeout" : 60000,
+      "instances": 1,
+      "exec_mode": "fork",
+      "env": {
+        "NODE_ENV": "production",
+        "NOTE": "note2"
+      }
+    },
+    {
+      "name": "crawl3",
+      "script": "nodejs",
+      "script"       : "crawl/",
+      "kill_timeout" : 60000,
+      "instances": 1,
+      "exec_mode": "fork",
+      "env": {
+        "NODE_ENV": "production",
+        "NOTE": "note3"
+      }
+    }
+	]
+}

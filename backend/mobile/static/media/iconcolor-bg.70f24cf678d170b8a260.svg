@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="80" height="60" viewBox="0 0 80 60">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.902" y1="0.188" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#7ba7ff"/>
+      <stop offset="1" stop-color="#264bde"/>
+    </linearGradient>
+    <clipPath id="clip-path">
+      <rect id="矩形_1739" data-name="矩形 1739" width="80" height="60" rx="6" transform="translate(13 138.263)" fill="url(#linear-gradient)"/>
+    </clipPath>
+  </defs>
+  <g id="组_4423" data-name="组 4423" transform="translate(-13 -138.263)">
+    <rect id="矩形_1708" data-name="矩形 1708" width="80" height="60" rx="6" transform="translate(13 138.263)" fill="url(#linear-gradient)"/>
+    <g id="蒙版组_41" data-name="蒙版组 41" clip-path="url(#clip-path)">
+      <ellipse id="椭圆_365" data-name="椭圆 365" cx="44.5" cy="26" rx="44.5" ry="26" transform="translate(9 182.263)" fill="rgba(255,255,255,0.3)"/>
+    </g>
+    <g id="soccer_menu" transform="translate(31 180.263)">
+      <g id="组_2061" data-name="组 2061" transform="translate(0 -36)">
+        <g id="组_2047" data-name="组 2047" transform="translate(0 36.452)">
+          <ellipse id="椭圆_284" data-name="椭圆 284" cx="21" cy="5" rx="21" ry="5" transform="translate(0 0.548)" fill="#2f4600"/>
+          <ellipse id="椭圆_283" data-name="椭圆 283" cx="21" cy="5" rx="21" ry="5" transform="translate(0 -0.452)" fill="#5c8a00"/>
+          <ellipse id="椭圆_285" data-name="椭圆 285" cx="7" cy="1.5" rx="7" ry="1.5" transform="translate(16 4.548)" fill="#355000"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

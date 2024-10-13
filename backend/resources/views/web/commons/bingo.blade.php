@@ -1,0 +1,1 @@
+<numbe-games list="number_games"></numbe-games>

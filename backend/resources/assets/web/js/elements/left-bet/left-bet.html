@@ -1,0 +1,181 @@
+<div ng-if="settings.show">
+<!-- BET -->
+   <div id="BettingModeContainer" class="TabBox" style="">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tbody>
+        <tr>
+          <td id="div_menu_single" class="R_menu_R pointer" ng-class="{'current': settings.type == 'single'}" title="Single">
+            <span class="icon-arrow"></span>
+            <a ng-click="switchBettingMode('single')"><span class="subTitle">Single</span></a>
+          </td>
+          <td id="div_menu_parlay" class="R_menu_gr pointer" ng-class="{'current': settings.type == 'multiple'}" title="Cá cược tổng hợp">
+            <span class="icon-arrow"></span>
+            <a ng-click="switchBettingMode('multiple')">
+              <span class="subTitle">Cá cược tổng hợp</span>
+              <span class="numSelections" id="mparlay_cnt" ng-if="mulBets.length">{{mulBets.length}}</span>
+            </a>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- MENU -->
+   <div id="BetProcessContainer" ng-show="settings.type == 'single'">
+    <form name="fomConfirmBet" ng-submit="betSubmit()" autocomplete="off" novalidate>
+      <div id="BP_SPORT" style="">
+        <div class="leftBoxbody">
+          <div class="boxbg">
+            <div id="BetInfo" class="BetInfo" ng-class="{'liveligh': model.event.time_status == 1}"> 
+              <div class="TextStyle01 pad"><span id="menuTitle">{{game_name}} / </span> <span id="menuTitleOT" style="display: none;">Cược Thắng</span> <span id="tdBetKind" height="=27">{{model.odd_type}}</span></div>
+              <div id="trOddsInfo">
+                <div id="tdLiveBgColor" class="bet">
+                  <div class="pad"><span id="spChoiceClass" class="FavTeamClass">{{model.odd_name}}</span><br>
+                    <span id="sbBetKindValue" class="HdpGoalClass">{{model | handicapValue}}</span>
+                    <span id="spScoreValue" class="TextStyle01">[{{model.ss}}]</span>
+                    <span class="TextStyle03">@</span>
+                    <span id="bodds" class="UdrDogOddsClassBetProcess" ng-class="{'FavOddsClass': model.bet_value < 0}">{{model.bet_value | number:2}}</span>
+                  </div>
+                  <div id="sbBetAOSValue" class=""></div>
+                </div>
+                <div id="divKeepBetProcess" class="checkbox">
+                  <input id="chKeepBet" ng-model="settings.auto" name="chKeepBet" type="checkbox" ng-change="onChange()">                    
+                  <span id="KeepOdds"><span>Tự làm mới({{number}})</span></span></div>
+                </div>
+                  <div class="TextStyle04 pad">
+                    <div id="spHome_id"><span id="spHome">{{model.event.home}}</span></div>
+                    <div id="spAway_id"><span id="spAway">{{model.event.away}}</span></div><div id="spMatchCode_id"><span id="spMatchCode"></span></div>
+                  <div id="ot_dvChoiceValue_id" style="display: none;"><span id="ot_dvChoiceValue" style="display: none;"></span></div>
+                  <div id="spLeaguename_id" class="TextStyle07">
+                    <span id="spLeaguename">{{model.event.league_name}}</span>
+                  </div>
+                </div>
+                <div id="div_addparlay" class="checkbox txtleft addToParlay" style="display: none;"><input type="checkbox" id="chk_addToParlay" onclick="SingleToParlay();"><div id="icon_addParlay">Add to Parlay</div></div>
+                <div class="Currency pad mag">UT
+                  <span class="deleteicon">
+                    <input id="BPstake" ng-model="model.bet_amount" name="BPstake" type="number" size="10" class="deletable" style="ime-mode:disabled" autocomplete="off" onpaste="return false;"><span></span>
+                  </span>
+                </div>
+                <div id="divAcceptBetterOdds" class="checkbox txtleft">
+                  <input id="cbAcceptBetterOdds" name="cbAcceptBetterOdds" type="checkbox" checked="" value="1">
+                  <div>Tự nhận tỷ lệ cược tốt</div>
+                </div>
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tabstyle02">
+                  <tbody><tr id="trlPayOut">
+                    <th nowrap="nowrap" width="10px">Thanh Toán</th>
+                    <td>&nbsp;<span id="payOut">{{model | payAmount | number:2}}</span><span id="scoremap" class="iconOdds scoreMap right" title="Score Map" style="display: block;"></span></td>
+                  </tr>
+                  <tr>
+                    <th nowrap="nowrap">Tối Thiểu</th>
+                    <td id="tdBetprocessMinBet" class="BetprocessMinBet">UT&nbsp;<span id="spMinBetValue">{{data.bongdamin | number}}</span></td>
+                  </tr>
+                  <tr>
+                    <th nowrap="nowrap">Tối đa</th>
+                    <td id="tdBetprocessMaxBet" nowrap="nowrap" class="BetprocessMaxBet">UT&nbsp;<span id="spMaxBetValue">{{data.bongdamax | number}}</span></td>
+                  </tr>
+                </tbody></table>
+              </div>
+              <div class="BetProcessBtnBox">
+                <a id="btnBPSubmit" style="cursor:pointer;" type="submit" class="button mark" title="Đặt Cược"><span ng-click="betSubmit()">Đặt Cược</span>
+                </a> 
+                <a style="cursor:pointer;" type="button" ng-click="backToHome()" class="button" title="Hủy"><span>Hủy</span></a> </div>
+                <!-- <div id="BPOddsChangeAlert" class="tips box" style="display: block;" ng-show="oldValue && oldValue != model.bet_value">
+                  <div class="content info">Tỷ lệ cược đã thay đổi từ <em>{{oldValue}}</em> Thành <em>{{model.bet_value}}</em>
+                  </div>
+                </div> -->
+                <div id="BPOddsChangeAlert" class="tips box" style="display: block;" ng-show="error_message">
+                  <div class="content info" ng-bind-html="error_message | safeHtml">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="leftBoxFoot"></div>
+            <div class="Backmenu pointer" ng-click="backToHome()">
+              <span class="icon-arrow"></span>
+              <a >Trở về Menu</a>
+            </div>
+          </div>
+              </form>
+            </div>
+   <!-- BET END -->
+
+   <div id="div_MixParlay" ng-show="settings.type == 'multiple'">
+    <form name="betform" id="betform" ng-submit="betMulSubmit()" autocomplete="off" novalidate>
+      <div id="ParlayTitle" class="leftBoxTitle current" style="display: none;">
+        <span class="icon-arrow"></span><span class="titleTxt">Cá cược tổng hợp</span>
+      </div>
+      <div class="leftBoxbody">
+        <div class="boxbg multiple">
+        <div id="noparlayinfo" style="background-color: rgb(255, 255, 255);" ng-hide="mulBets.length > 0" class="BetInfo">
+            <div class="TextStyle04">Không đủ trận đấu (ít nhất 3 trận đấu) để đặt cược cho Cá Cược Tổng Hợp</div>  
+        </div>
+        <div id="ParlayDetail" style="">
+          <mul-bet-item on-delete="onDelete" item="value" ng-repeat="(key, value) in mulBets"></mul-bet-item>
+        </div>
+        <div id="divKeepOdds" ng-show="mulBets.length > 2">
+            <div class="checkbox txtleft">
+              <input id="cbKeepOdds" name="cbKeepOdds" type="checkbox" checked value="1">
+              <div> Tự nhận tỉ lệ cược tốt nhất</div>
+            </div>
+            <div class="line mag"></div>
+            </div>
+            <div id="Div_Over100" class="tips box" style="display:none">
+                <div class="content info"> Selection limit for parlay had been exceeded. Maximum <em>100</em> selections are allowed. Please reduce the selections.</div>
+            </div>
+            <div id="Div_Over8" class="tips box" style="display:none">
+                <div class="content info"> Selection limit for parlay had been exceeded. Maximum <em>8</em> selections are allowed. Please reduce the selections.</div>
+            </div>
+          <div id="parlay_bet_info">
+
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tabstyle02" ng-show="mulBets.length > 2">
+
+        <tbody><tr id="tr_mixparlay_odds">
+
+          <th>Tỷ lệ</th>
+          <td><span id="TotalOdds">{{(mulModel.bet_total = (mulBets | betsValue)) | number:2}}</span>
+            <span id="CombiOdds" style="display:none;"> </span>
+          </td>
+        </tr>
+        <tr>
+          <th>Tiền cược</th>
+
+          <td nowrap="nowrap" class="Currency">UT
+            <input id="mulStake" ng-model="mulModel.bet_amount" autofocus name="tien" autocomplete="off" type="text" style="ime-mode:disabled; width:55px;">
+          </td>
+          </tr>
+          <tr>
+            <th id="TotalStakeName">Tổng Tiền Cược</th>
+            <td class="Odds_Upd">&nbsp;<span id="TotalStakeValue">{{mulModel.bet_amount | numberPretty:2}}</span>
+            </td>
+          </tr>
+          <tr>
+            <th>Tiền Trả Trước</th>
+            <td>&nbsp;<span id="txtPayOut">{{mulModel.bet_total * mulModel.bet_amount | numberPretty:2}}</span></td>
+          </tr>
+
+          <tr>
+            <th>Tối thiểu</th>
+            <td id="tdMixParlayMinBet" class="MinBet"><span id="mincurrency">UT</span> &nbsp;<span id="MPMinBet">{{data.bongdamin | number}}</span></td>
+          </tr>
+          <tr>
+            <th>Tối đa</th>
+            <td id="tdMixParlayMaxBet" class="MaxBet"><span id="maxcurrency">UT</span> &nbsp;<span id="MPMaxBet">{{data.bongdamax | number}}</span></td>
+          </tr>
+        </tbody></table>
+      </div>
+          <div id="parlay_bet_info2" style="" ng-show="mulBets.length > 2">
+            <div class="BetProcessBtnBox">
+              <a id="btnMPSubmit" style="cursor:pointer" type="submit" class="button mark" title="Đặt Cược"><span ng-click="betMulSubmit()">Đặt Cược</span>
+              </a> 
+              <a style="cursor:pointer" type="button" ng-click="backToHome()" class="button" title="Hủy"><span>Hủy</span></a></div>
+              <div id="ParlayOddsChangeAlert" class="tips box" ng-if="mul_error_message">
+                <div class="content info" ng-bind-html="mul_error_message | safeHtml">
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="account_foot"></div>
+      <div class="Backmenu"><span class="icon-arrow"></span><a ng-click="backToHome()">Trở về Menu</a></div>
+    </form>
+  </div>
+ </div>

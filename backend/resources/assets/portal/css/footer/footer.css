@@ -1,0 +1,11 @@
+#footer
+{
+	height: 22px;
+	border: 1px #c8c8c8 solid;
+	text-align: right;
+	padding-right: 10px;
+	line-height: 19px;
+	font-family: Tahoma,Arial,helvetica,sans-serif;
+	font-size: 11px;
+	background: white;
+}

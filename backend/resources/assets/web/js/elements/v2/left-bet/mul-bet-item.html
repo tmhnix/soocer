@@ -1,0 +1,15 @@
+<button class="glyphIcon icon-close" title="Close" ng-click="onDeleteItem();"></button>
+<div class="betType">
+	<!-- react-text: 2777 -->Bóng đá<!-- /react-text --><!-- react-text: 2778 --> / <!-- /react-text --><!-- react-text: 2779 -->{{item.odd_type}}<!-- /react-text -->
+</div>
+<div class="betDetial">
+	<div class="name ">{{item.odd_name}}</div>
+	<div class="oddsDetail"><span class="selectorName">{{item | handicapValue}}</span>
+		<span class="selectorScore">[{{item.event.ss}}]</span>
+		<span class="selectorOther">@</span>
+		<span class="selectorOdds">{{item.bet_value | numberOdd:2}}</span></div>
+</div>
+<div class="matchInfo-line">
+	<div class="homeName" title="Hiroshima Sanfrecce">{{item.event.home}}</div>
+	<div class="awayName" title="Vissel Kobe">{{item.event.away}}</div>
+</div>

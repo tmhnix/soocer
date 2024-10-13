@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="ico_home"
+            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            viewBox="0 0 28 28" xml:space="preserve">
+            <g>
+              <linearGradient id="Path_3_" gradientUnits="userSpaceOnUse" x1="-38.7915" y1="42.409" x2="-38.7915"
+                y2="41.098" gradientTransform="matrix(23.9977 0 0 -21.998 944.9085 935.9161)">
+                <stop className="c-icon-gradient" offset="0"></stop>
+                <stop className="c-icon-gradient icon-gradient--dark" offset="1"></stop>
+              </linearGradient>
+              <path id="Path" className="st0"
+                d="M14,3c-0.3,0-0.5,0.1-0.7,0.3l-10.8,10c-0.5,0.3-0.7,1-0.3,1.5c0.2,0.3,0.5,0.5,0.9,0.5h2.5v8.5 c0,0.6,0.5,1.1,1.1,1.1h5c0.6,0,1.1-0.5,1.1-1.1v-6.1h2.4v6.1c0,0.6,0.5,1.1,1.1,1.1h5c0.6,0,1.1-0.5,1.1-1.1v-8.5h2.5 c0.6,0,1.1-0.5,1.1-1.1c0-0.4-0.2-0.7-0.5-0.9l-10.8-10C14.5,3.1,14.3,3,14,3L14,3z">
+              </path>
+              <path id="Path_2_" className="st1"
+                d="M14,3c-0.3,0-0.5,0.1-0.7,0.3l-10.8,10c-0.5,0.3-0.7,1-0.3,1.5c0.2,0.3,0.5,0.5,0.9,0.5h2.5v8.5 c0,0.6,0.5,1.1,1.1,1.1h5c0.6,0,1.1-0.5,1.1-1.1v-6.1h2.4v6.1c0,0.6,0.5,1.1,1.1,1.1h5c0.6,0,1.1-0.5,1.1-1.1v-8.5h2.5 c0.6,0,1.1-0.5,1.1-1.1c0-0.4-0.2-0.7-0.5-0.9l-10.8-10C14.5,3.1,14.3,3,14,3L14,3z">
+              </path>
+              <g>
+                <defs>
+                  <path id="Path_1_"
+                    d="M14,3c-0.3,0-0.5,0.1-0.7,0.3l-10.8,10c-0.5,0.3-0.7,1-0.3,1.5c0.2,0.3,0.5,0.5,0.9,0.5h2.5v8.5 c0,0.6,0.5,1.1,1.1,1.1h5c0.6,0,1.1-0.5,1.1-1.1v-6.1h2.4v6.1c0,0.6,0.5,1.1,1.1,1.1h5c0.6,0,1.1-0.5,1.1-1.1v-8.5h2.5 c0.6,0,1.1-0.5,1.1-1.1c0-0.4-0.2-0.7-0.5-0.9l-10.8-10C14.5,3.1,14.3,3,14,3L14,3z">
+                  </path>
+                </defs>
+                <clipPath id="Path_4_">
+                  <use xlink:href="#Path_1_" style="overflow: visible;"></use>
+                </clipPath>
+                <linearGradient id="PathHome_1_1_" gradientUnits="userSpaceOnUse" x1="-38.6665" y1="42.4186"
+                  x2="-38.6665" y2="41.4186" gradientTransform="matrix(22.3611 0 0 -22.361 880.4424 954.163)">
+                  <stop offset="0" style="stop-color: rgb(255, 255, 255);"></stop>
+                  <stop offset="1" style="stop-color: rgb(255, 255, 255); stop-opacity: 0;"></stop>
+                </linearGradient>
+                <path id="PathHome_1" className="st2" d="M4.6,28c0-12.3,10-22.4,22.4-22.4l0,0V28H4.6z"></path>
+              </g>
+            </g>
+          </svg>

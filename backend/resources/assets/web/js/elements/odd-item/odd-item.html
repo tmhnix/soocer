@@ -1,0 +1,467 @@
+<div class="multiOdds" ng-if="type!=='correct_score'">
+   <div class="event">
+      <div class="team" ng-show="key == 0">
+         <div class="name name-pointer" ng-class="{'accent': odd.ft_hdp.handicap && odd.ft_hdp.handicap_team == 'home'}"
+            title="CA Independiente">
+            <div class="text">
+               <span>{{event.home}}</span>
+               <div class="card " ng-if="event.reds.home > 0">{{event.reds.home}}</div>
+            </div>
+         </div>
+         <div class="iconSet">
+            <button ng-click="openLive()" ng-show="event.live_id !== '' && event.saba === false" class="icon-streaming accent smallBtn"
+               title="Live Streaming"></button>
+            <button ng-click="openMatch()" title="Live Match" class="accent icon-soccer smallBtn">
+            </button>
+            <!-- <button class="icon-favorite smallBtn" title="Favorite"></button> -->
+         </div>
+      </div>
+      <div class="team" ng-show="key == 0">
+         <div class="name name-pointer" ng-class="{'accent': odd.ft_hdp.handicap && odd.ft_hdp.handicap_team == 'away'}"
+            title="Defensa y Justicia">
+            <div class="text">
+               <span>{{event.away}}</span>
+               <div class="card " ng-if="event.reds.away > 0">{{event.reds.away}}</div>
+            </div>
+         </div>
+         <div class="iconSet">
+            <button ng-click="openStatic()" class="primary icon-statistic smallBtn"
+               title="Statistic Information"></button>
+         </div>
+      </div>
+      <div class="team" ng-show="key == 0">
+         <div class="extra">Hòa</div>
+      </div>
+   </div>
+   <div class="odds subtxt updated">
+      <div class="betArea" visible="odd.ft_hdp.home_od">
+         <span class="txt">
+            <span ng-if="odd.ft_hdp.handicap_team == 'home'">{{odd.ft_hdp.handicap}}</span>
+         </span>
+         <div class="oddsBet" style="cursor:pointer;" define-text-v2='odd.ft_hdp.home_od' odd-kind='{{odd_kind}}'>
+            <span ng-click="onBet('Handicap', 'ft_hdp', 'home', odd.ft_hdp.home_od)">{{odd.ft_hdp.home_od |
+               numberOdd:2}}</span>
+         </div>
+      </div>
+      <div class="betArea" visible="odd.ft_hdp.home_od">
+         <span class="txt">
+            <span ng-if="odd.ft_hdp.handicap_team == 'away'">{{odd.ft_hdp.handicap}}</span>
+         </span>
+         <div class="oddsBet" style="cursor:pointer;" define-text-v2='odd.ft_hdp.away_od' odd-kind='{{odd_kind}}'>
+            <span ng-click="onBet('Handicap', 'ft_hdp', 'away', odd.ft_hdp.away_od)">{{odd.ft_hdp.away_od |
+               numberOdd:2}}</span>
+         </div>
+      </div>
+   </div>
+   <div class="odds subtxt updated " >
+      <div class="betArea" visible="odd.ft_ou.over_od">
+         <span class="txt">
+            <span>{{odd.ft_ou.handicap}}</span>
+         </span>
+         <div class="oddsBet" style="cursor:pointer;" define-text-v2='odd.ft_ou.over_od' odd-kind='{{odd_kind}}'>
+            <span ng-click="onBet('Tài/Xỉu', 'ft_ou', 'home', odd.ft_ou.over_od)">{{odd.ft_ou.over_od |
+               numberOdd:2}}</span>
+         </div>
+      </div>
+      <div class="betArea" visible="odd.ft_ou.over_od">
+         <span class="txt">
+            <span ng-if="odd.ft_ou.under_od">u</span>
+         </span>
+         <div class="oddsBet underdog" style="cursor:pointer;" define-text-v2='odd.ft_ou.under_od'
+            odd-kind='{{odd_kind}}'>
+            <span ng-click="onBet('Tài/Xỉu', 'ft_ou', 'away', odd.ft_ou.under_od)">{{odd.ft_ou.under_od |
+               numberOdd:2}}</span>
+         </div>
+      </div>
+   </div>
+   <div class="odds" >
+      <div class="betArea" visible="key == 0 && odd.ft_1x2.home_od">
+         <div class="oddsBet" ng-click="onBet('FT. 1X2', 'ft_1x2', 'home', odd.ft_1x2.home_od)" style="cursor:pointer;"
+            define-text-v2='odd.ft_1x2.home_od' odd-kind='{{odd_kind}}'>
+            <span>{{odd.ft_1x2.home_od | numberOdd:2}}</span>
+         </div>
+      </div>
+      <div class="betArea" visible="key == 0 && odd.ft_1x2.home_od">
+         <div class="oddsBet" ng-click="onBet('FT. 1X2', 'ft_1x2', 'away', odd.ft_1x2.away_od)" style="cursor:pointer;"
+            define-text-v2='odd.ft_1x2.away_od' odd-kind='{{odd_kind}}'>
+            <span>{{odd.ft_1x2.away_od | numberOdd:2}}</span>
+         </div>
+      </div>
+      <div class="betArea" ng-show="key == 0" visible="key == 0 && odd.ft_1x2.home_od">
+         <div class="oddsBet" ng-click="onBet('FT. 1X2', 'ft_1x2', 'draw', odd.ft_1x2.draw_od)" style="cursor:pointer;"
+            define-text-v2='odd.ft_1x2.draw_od' odd-kind='{{odd_kind}}'>
+            <span>{{odd.ft_1x2.draw_od | numberOdd:2}}</span>
+         </div>
+      </div>
+   </div>
+   <div class="odds subtxt updated">
+      <div class="betArea" visible="odd.hf_hdp.home_od">
+         <span class="txt">
+            <span ng-if="odd.hf_hdp.handicap_team == 'home'">{{odd.hf_hdp.handicap}}</span>
+         </span>
+         <div class="oddsBet" style="cursor:pointer;" define-text-v2='odd.hf_hdp.home_od' odd-kind='{{odd_kind}}'>
+            <span ng-click="onBet('1H - Handicap', 'hf_hdp', 'home', odd.hf_hdp.home_od)">{{odd.hf_hdp.home_od |
+               numberOdd:2}}</span>
+         </div>
+      </div>
+      <div class="betArea" visible="odd.hf_hdp.home_od">
+         <span class="txt">
+            <span ng-if="odd.hf_hdp.handicap_team == 'away'">{{odd.hf_hdp.handicap}}</span>
+         </span>
+         <div class="oddsBet underdog" style="cursor:pointer;" define-text-v2='odd.hf_hdp.away_od'
+            odd-kind='{{odd_kind}}'>
+            <span ng-click="onBet('1H - Handicap', 'hf_hdp', 'away', odd.hf_hdp.away_od)">{{odd.hf_hdp.away_od |
+               numberOdd:2}}</span>
+         </div>
+      </div>
+   </div>
+   <div class="odds subtxt updated" >
+      <div class="betArea" visible="odd.hf_ou.over_od">
+         <span class="txt">
+            <span>{{odd.hf_ou.handicap}}</span>
+         </span>
+         <div class="oddsBet" style="cursor:pointer;" define-text-v2='odd.hf_ou.over_od' odd-kind='{{odd_kind}}'>
+            <span ng-click="onBet('1H - Tài/Xỉu', 'hf_ou', 'home', odd.hf_ou.over_od)">{{odd.hf_ou.over_od |
+               numberOdd:2}}</span>
+         </div>
+      </div>
+      <div class="betArea" visible="odd.hf_ou.over_od">
+         <span class="txt">
+            <span ng-if="odd.hf_ou.over_od">u</span>
+         </span>
+         <div class="oddsBet" style="cursor:pointer;" define-text-v2='odd.hf_ou.under_od' odd-kind='{{odd_kind}}'>
+            <span ng-click="onBet('1H - Tài/Xỉu', 'hf_ou', 'away', odd.hf_ou.under_od)">{{odd.hf_ou.under_od |
+               numberOdd:2}}</span>
+         </div>
+      </div>
+   </div>
+   <div class="odds" >
+      <div class="betArea" visible="key == 0 && odd.hf_1x2.home_od">
+         <div class="oddsBet" ng-click="onBet('1H. 1X2', 'hf_1x2', 'home', odd.hf_1x2.home_od)" style="cursor:pointer;"
+            define-text-v2='odd.hf_1x2.home_od' odd-kind='{{odd_kind}}'>
+            <span>{{odd.hf_1x2.home_od | numberOdd:2}}</span>
+         </div>
+      </div>
+      <div class="betArea" visible="key == 0 && odd.hf_1x2.home_od">
+         <div class="oddsBet" ng-click="onBet('1H. 1X2', 'hf_1x2', 'away', odd.hf_1x2.away_od)" style="cursor:pointer;"
+            define-text-v2='odd.hf_1x2.away_od' odd-kind='{{odd_kind}}'>
+            <span>{{odd.hf_1x2.away_od | numberOdd:2}}</span>
+         </div>
+      </div>
+      <div class="betArea" ng-show="key == 0" visible="key == 0 && odd.hf_1x2.home_od">
+         <div class="oddsBet" ng-click="onBet('1H. 1X2', 'hf_1x2', 'draw', odd.hf_1x2.draw_od)" style="cursor:pointer;"
+            define-text-v2='odd.hf_1x2.draw_od' odd-kind='{{odd_kind}}'>
+            <span>{{odd.hf_1x2.draw_od | numberOdd:2}}</span>
+         </div>
+      </div>
+   </div>
+</div>
+
+<div class="multiOdds" ng-if="type=='correct_score'">
+   <div class="event">
+      <div class="team">
+         <div class="name name-pointer" ng-class="{'accent': odd.ft_hdp.handicap && odd.ft_hdp.handicap_team == 'home'}"
+            title="CA Independiente">
+            <div class="text">
+               <span>{{event.home}}</span>
+               <div class="card " ng-if="event.reds.home> 0">{{event.reds.home}}</div>
+            </div>
+         </div>
+         <div class="iconSet">
+            <button ng-click="openLive()" ng-show="event.live_id !== '' && event.saba === false" class="icon-streaming accent smallBtn"
+               title="Live Streaming"></button>
+            <button ng-click="openMatch()" title="Live Match" class="accent icon-soccer smallBtn">
+            </button>
+            <!-- <button class="icon-favorite smallBtn" title="Favorite"></button> -->
+         </div>
+      </div>
+      <div class="team">
+         <div class="name name-pointer" ng-class="{'accent': odd.ft_hdp.handicap && odd.ft_hdp.handicap_team == 'away'}"
+            title="Defensa y Justicia">
+            <div class="text">
+               <span>{{event.away}}</span>
+               <div class="card " ng-if="event.reds.away> 0">{{event.reds.away}}</div>
+            </div>
+         </div>
+         <div class="iconSet">
+            <button ng-click="openStatic()" class="primary icon-statistic smallBtn"
+               title="Statistic Information"></button>
+         </div>
+      </div>
+   </div>
+   <div class="odds">
+      <div class="betArea">
+         <div class="oddsBet" ng-show="event.correct_score['1_0']!== ''"
+            ng-click="onBet('Điểm số chính xác', 'correct_score', '1_0', event.correct_score['1_0'])"
+            style="cursor:pointer;" odd-kind='{{odd_kind}}' define-text-v2="event.correct_score['1_0']"><span
+               class="">{{
+               event.correct_score['1_0']}}</span></div>
+         <div class="oddsBet disable" ng-show="event.correct_score['1_0'] === ''"><span class="">--</span></div>
+      </div>
+      <div class="betArea">
+         <div class="oddsBet" ng-show="event.correct_score['0_1']"
+            ng-click="onBet('Điểm số chính xác', 'correct_score', '0_1', event.correct_score['0_1'])"
+            style="cursor:pointer;" odd-kind='{{odd_kind}}' define-text-v2="event.correct_score['0_1']"><span
+               class="">{{event.correct_score['0_1']}}</span></div>
+         <div class="oddsBet disable" ng-show="event.correct_score['0_1'] === ''"><span class="">--</span></div>
+      </div>
+   </div>
+
+   <div class="odds">
+      <div class="betArea">
+         <div class="oddsBet" ng-show="event.correct_score['2_0']!== ''"
+            ng-click="onBet('Điểm số chính xác', 'correct_score', '2_0', event.correct_score['2_0'])"
+            style="cursor:pointer;" odd-kind='{{odd_kind}}' define-text-v2="event.correct_score['2_0']"><span
+               class="">{{
+               event.correct_score['2_0']}}</span></div>
+         <div class="oddsBet disable" ng-show="event.correct_score['2_0'] === ''"><span class="">--</span></div>
+      </div>
+      <div class="betArea">
+         <div class="oddsBet" ng-show="event.correct_score['0_2']"
+            ng-click="onBet('Điểm số chính xác', 'correct_score', '0_2', event.correct_score['0_2'])"
+            style="cursor:pointer;" odd-kind='{{odd_kind}}' define-text-v2="event.correct_score['0_2']"><span
+               class="">{{event.correct_score['0_2']}}</span></div>
+         <div class="oddsBet disable" ng-show="event.correct_score['0_2'] === ''"><span class="">--</span></div>
+      </div>
+   </div>
+   <div class="odds">
+      <div class="betArea">
+         <div class="oddsBet" ng-show="event.correct_score['2_1']!== ''"
+            ng-click="onBet('Điểm số chính xác', 'correct_score', '2_1', event.correct_score['2_1'])"
+            style="cursor:pointer;" odd-kind='{{odd_kind}}' define-text-v2="event.correct_score['2_1']"><span
+               class="">{{
+               event.correct_score['2_1']}}</span></div>
+         <div class="oddsBet disable" ng-show="event.correct_score['2_1'] === ''"><span class="">--</span></div>
+      </div>
+      <div class="betArea">
+         <div class="oddsBet" ng-show="event.correct_score['1_2']!== ''"
+            ng-click="onBet('Điểm số chính xác', 'correct_score', '1_2', event.correct_score['1_2'])"
+            style="cursor:pointer;" odd-kind='{{odd_kind}}' define-text-v2="event.correct_score['1_2']"><span
+               class="">{{event.correct_score['1_2']}}</span></div>
+         <div class="oddsBet disable" ng-show="event.correct_score['1_2'] === ''"><span class="">--</span></div>
+      </div>
+   </div>
+
+   <div class="odds">
+      <div class="betArea">
+         <div class="oddsBet" ng-show="event.correct_score['3_0']!== ''"
+            ng-click="onBet('Điểm số chính xác', 'correct_score', '3_0', event.correct_score['3_0'])"
+            style="cursor:pointer;" odd-kind='{{odd_kind}}' define-text-v2="event.correct_score['3_0']"><span
+               class="">{{
+               event.correct_score['3_0']}}</span></div>
+         <div class="oddsBet disable" ng-show="event.correct_score['3_0'] === ''"><span class="">--</span></div>
+      </div>
+      <div class="betArea">
+         <div class="oddsBet" ng-show="event.correct_score['0_3']"
+            ng-click="onBet('Điểm số chính xác', 'correct_score', '0_3', event.correct_score['0_3'])"
+            style="cursor:pointer;" odd-kind='{{odd_kind}}' define-text-v2="event.correct_score['0_3']"><span
+               class="">{{event.correct_score['0_3']}}</span></div>
+         <div class="oddsBet disable" ng-show="event.correct_score['0_3'] === ''"><span class="">--</span></div>
+      </div>
+   </div>
+   <div class="odds">
+      <div class="betArea">
+         <div class="oddsBet" ng-show="event.correct_score['3_1']!== ''"
+            ng-click="onBet('Điểm số chính xác', 'correct_score', '3_1', event.correct_score['3_1'])"
+            style="cursor:pointer;" odd-kind='{{odd_kind}}' define-text-v2="event.correct_score['3_1']"><span
+               class="">{{
+               event.correct_score['3_1']}}</span></div>
+         <div class="oddsBet disable" ng-show="event.correct_score['3_1'] === ''"><span class="">--</span></div>
+      </div>
+      <div class="betArea">
+         <div class="oddsBet" ng-show="event.correct_score['1_3']!== ''"
+            ng-click="onBet('Điểm số chính xác', 'correct_score', '1_3', event.correct_score['1_3'])"
+            style="cursor:pointer;" odd-kind='{{odd_kind}}' define-text-v2="event.correct_score['1_3']"><span
+               class="">{{event.correct_score['1_3']}}</span></div>
+         <div class="oddsBet disable" ng-show="event.correct_score['1_3'] === ''"><span class="">--</span></div>
+      </div>
+   </div>
+
+   <div class="odds">
+      <div class="betArea">
+         <div class="oddsBet" ng-show="event.correct_score['3_2']!== ''"
+            ng-click="onBet('Điểm số chính xác', 'correct_score', '3_2', event.correct_score['3_2'])"
+            style="cursor:pointer;" odd-kind='{{odd_kind}}' define-text-v2="event.correct_score['3_2']"><span
+               class="">{{
+               event.correct_score['3_2']}}</span></div>
+         <div class="oddsBet disable" ng-show="event.correct_score['3_2'] === ''"><span class="">--</span></div>
+      </div>
+      <div class="betArea">
+         <div class="oddsBet" ng-show="event.correct_score['2_3']!== ''"
+            ng-click="onBet('Điểm số chính xác', 'correct_score', '2_3', event.correct_score['2_3'])"
+            style="cursor:pointer;" odd-kind='{{odd_kind}}' define-text-v2="event.correct_score['2_3']"><span
+               class="">{{event.correct_score['2_3']}}</span></div>
+         <div class="oddsBet disable" ng-show="event.correct_score['2_3'] === ''"><span class="">--</span></div>
+      </div>
+   </div>
+
+   <div class="odds">
+      <div class="betArea">
+         <div class="oddsBet" ng-if="event.correct_score['4_0']!== ''"
+            ng-click="onBet('Điểm số chính xác', 'correct_score', '4_0', event.correct_score['4_0'])"
+            style="cursor:pointer;" odd-kind='{{odd_kind}}' define-text-v2="event.correct_score['4_0']"><span
+               class="">{{
+               event.correct_score['4_0']}}</span></div>
+         <div class="oddsBet disable" ng-show="event.correct_score['4_0'] === ''"><span class="">--</span></div>
+      </div>
+      <div class="betArea">
+         <div class="oddsBet" ng-show="event.correct_score['0_4']!== ''"
+            ng-click="onBet('Điểm số chính xác', 'correct_score', '0_4', event.correct_score['0_4'])"
+            style="cursor:pointer;" odd-kind='{{odd_kind}}' define-text-v2="event.correct_score['0_4']"><span
+               class="">{{event.correct_score['0_4']}}</span></div>
+         <div class="oddsBet disable" ng-show="event.correct_score['0_4'] === ''"><span class="">--</span></div>
+      </div>
+   </div>
+
+   <div class="odds">
+      <div class="betArea">
+         <div class="oddsBet" ng-show="event.correct_score['4_1']!== ''"
+            ng-click="onBet('Điểm số chính xác', 'correct_score', '4_1', event.correct_score['4_1'])"
+            style="cursor:pointer;" odd-kind='{{odd_kind}}' define-text-v2="event.correct_score['4_1']"><span
+               class="">{{
+               event.correct_score['4_1']}}</span></div>
+         <div class="oddsBet disable" ng-show="event.correct_score['4_1'] === ''"><span class="">--</span></div>
+      </div>
+      <div class="betArea">
+         <div class="oddsBet" ng-show="event.correct_score['1_4']!== ''"
+            ng-click="onBet('Điểm số chính xác', 'correct_score', '1_4', event.correct_score['1_4'])"
+            style="cursor:pointer;" odd-kind='{{odd_kind}}'><span class="">{{event.correct_score['1_4']}}</span></div>
+         <div class="oddsBet disable" ng-show="event.correct_score['1_4'] === ''"><span class="">--</span></div>
+      </div>
+   </div>
+
+   <div class="odds">
+      <div class="betArea">
+         <div class="oddsBet" ng-show="event.correct_score['4_2']!== ''"
+            ng-click="onBet('Điểm số chính xác', 'correct_score', '4_2', event.correct_score['4_2'])"
+            style="cursor:pointer;" odd-kind='{{odd_kind}}' define-text-v2="event.correct_score['4_2']"><span
+               class="">{{
+               event.correct_score['4_2']}}</span></div>
+         <div class="oddsBet disable" ng-show="event.correct_score['4_2'] === ''"><span class="">--</span></div>
+      </div>
+      <div class="betArea">
+         <div class="oddsBet" ng-show="event.correct_score['2_4']!== ''"
+            ng-click="onBet('Điểm số chính xác', 'correct_score', '2_4', event.correct_score['2_4'])"
+            style="cursor:pointer;" odd-kind='{{odd_kind}}' define-text-v2="event.correct_score['2_4']"><span
+               class="">{{event.correct_score['2_4']}}</span></div>
+         <div class="oddsBet disable" ng-show="event.correct_score['2_4'] === ''"><span class="">--</span></div>
+      </div>
+   </div>
+
+   <div class="odds">
+      <div class="betArea">
+         <div class="oddsBet" ng-show="event.correct_score['4_3']!== ''"
+            ng-click="onBet('Điểm số chính xác', 'correct_score', '4_3', event.correct_score['4_3'])"
+            style="cursor:pointer;" odd-kind='{{odd_kind}}' define-text-v2="event.correct_score['4_3']"><span
+               class="">{{
+               event.correct_score['4_3']}}</span></div>
+         <div class="oddsBet disable" ng-show="event.correct_score['4_3'] === ''"><span class="">--</span></div>
+      </div>
+      <div class="betArea">
+         <div class="oddsBet" ng-show="event.correct_score['3_4']!== ''"
+            ng-click="onBet('Điểm số chính xác', 'correct_score', '3_4', event.correct_score['3_4'])"
+            style="cursor:pointer;" odd-kind='{{odd_kind}}' define-text-v2="event.correct_score['3_4']"><span
+               class="">{{event.correct_score['3_4']}}</span></div>
+         <div class="oddsBet disable" ng-show="event.correct_score['3_4'] === ''"><span class="">--</span></div>
+      </div>
+   </div>
+   <div class="odds">
+      <div class="betArea">
+         <div class="oddsBet" ng-show="event.correct_score['0_0']!== ''"
+            ng-click="onBet('Điểm số chính xác', 'correct_score', '0_0', event.correct_score['0_0'])"
+            style="cursor:pointer;" odd-kind='{{odd_kind}}' define-text-v2="event.correct_score['0_0']"><span
+               class="">{{
+               event.correct_score['0_0']}}</span></div>
+         <div class="oddsBet disable" ng-show="event.correct_score['0_0'] === ''"><span class="">--</span></div>
+      </div>
+   </div>
+   <div class="odds">
+      <div class="betArea">
+         <div class="oddsBet" ng-show="event.correct_score['1_1']!== ''"
+            ng-click="onBet('Điểm số chính xác', 'correct_score', '1_1', event.correct_score['1_1'])"
+            style="cursor:pointer;" odd-kind='{{odd_kind}}' define-text-v2="event.correct_score['1_1']"><span
+               class="">{{
+               event.correct_score['1_1']}}</span></div>
+         <div class="oddsBet disable" ng-show="event.correct_score['1_1'] === ''"><span class="">--</span></div>
+      </div>
+   </div>
+
+   <div class="odds">
+      <div class="betArea">
+         <div class="oddsBet" ng-show="event.correct_score['2_2']!== ''"
+            ng-click="onBet('Điểm số chính xác', 'correct_score', '2_2', event.correct_score['2_2'])"
+            style="cursor:pointer;" odd-kind='{{odd_kind}}' define-text-v2="event.correct_score['2_2']"><span
+               class="">{{
+               event.correct_score['2_2']}}</span></div>
+         <div class="oddsBet disable" ng-show="event.correct_score['2_2'] === ''"><span class="">--</span></div>
+      </div>
+   </div>
+
+   <div class="odds">
+      <div class="betArea">
+         <div class="oddsBet" ng-show="event.correct_score['3_3']!== ''"
+            ng-click="onBet('Điểm số chính xác', 'correct_score', '3_3', event.correct_score['3_3'])"
+            style="cursor:pointer;" odd-kind='{{odd_kind}}' define-text-v2="event.correct_score['3_3']"><span
+               class="">{{
+               event.correct_score['3_3']}}</span></div>
+         <div class="oddsBet disable" ng-show="event.correct_score['3_3'] === ''"><span class="">--</span></div>
+      </div>
+   </div>
+
+   <div class="odds">
+      <div class="betArea">
+         <div class="oddsBet" ng-show="event.correct_score['4_4']!== ''"
+            ng-click="onBet('Điểm số chính xác', 'correct_score', '4_4', event.correct_score['4_4'])"
+            style="cursor:pointer;" odd-kind='{{odd_kind}}' define-text-v2="event.correct_score['4_4']"><span
+               class="">{{
+               event.correct_score['4_4']}}</span></div>
+         <div class="oddsBet disable" ng-show="event.correct_score['4_4'] === ''"><span class="">--</span></div>
+      </div>
+   </div>
+
+   <div class="odds">
+      <div class="betArea">
+         <div class="oddsBet" ng-show="event.correct_score['AOS']!== ''"
+            ng-click="onBet('Điểm số chính xác', 'correct_score', 'AOS', event.correct_score['AOS'])"
+            style="cursor:pointer;" odd-kind='{{odd_kind}}' define-text-v2="event.correct_score['AOS']"><span
+               class="">{{
+               event.correct_score['AOS']}}</span></div>
+         <div class="oddsBet disable" ng-show="event.correct_score['AOS'] === ''"><span class="">--</span></div>
+      </div>
+   </div>
+
+</div>
+
+<div class="multiOdds" ng-if="type==='saba_game'">
+   <div class="event">
+      <div class="team">
+         <div class="name name-pointer" ng-class="{'accent': odd.ft_hdp.handicap && odd.ft_hdp.handicap_team == 'home'}"
+            title="CA Independiente">
+            <div class="text">
+               <span>{{event.home}}</span>
+               <div class="card " ng-if="event.reds.home> 0">{{event.reds.home}}</div>
+            </div>
+         </div>
+         <div class="iconSet">
+            <button ng-click="openLive()" ng-show="event.live_id !== '' && event.saba === false" class="icon-streaming accent smallBtn"
+               title="Live Streaming"></button>
+            <button ng-click="openMatch()" title="Live Match" class="accent icon-soccer smallBtn">
+            </button>
+            <!-- <button class="icon-favorite smallBtn" title="Favorite"></button> -->
+         </div>
+      </div>
+      <div class="team">
+         <div class="name name-pointer" ng-class="{'accent': odd.ft_hdp.handicap && odd.ft_hdp.handicap_team == 'away'}"
+            title="Defensa y Justicia">
+            <div class="text">
+               <span>{{event.away}}</span>
+               <div class="card " ng-if="event.reds.away> 0">{{event.reds.away}}</div>
+            </div>
+         </div>
+         <div class="iconSet">
+            <button ng-click="openStatic()" class="primary icon-statistic smallBtn"
+               title="Statistic Information"></button>
+         </div>
+      </div>
+   </div>
+</div>

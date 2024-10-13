@@ -1,0 +1,9 @@
+{
+  "apps" : [
+    {
+      "name": "crawl1",
+      "script": "nodejs",
+      "script"       : "crawl/",
+      "kill_timeout" : 60000
+    }]
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="ico_statement" xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 28 28" xml:space="preserve">
+          <linearGradient id="path_17_1_" gradientUnits="userSpaceOnUse" x1="-38.5001" y1="39.3074" x2="-38.5001"
+            y2="37.9844" gradientTransform="matrix(22.0009 0 0 -22.0016 861.035 864.0621)">
+            <stop class="icon-gradient" offset="0"></stop>
+            <stop class="icon-gradient icon-gradient--dark" offset="1"></stop>
+          </linearGradient>
+          <path id="path_17" class="st0" d="M23.8,25H6.5c-0.7,0-1.2-0.5-1.2-1.2c0,0,0,0,0,0v-4.9H3v-1.2h2.2V14H3v-1.2h2.2V9.1H3V7.9h2.2
+ V4.2C5.2,3.6,5.8,3,6.4,3c0,0,0,0,0,0h17.3C24.4,3,25,3.5,25,4.2c0,0,0,0,0,0v19.6C25,24.4,24.5,25,23.8,25C23.8,25,23.8,25,23.8,25
+ z M11.3,17.6v1h8v-1H11.3z M11.3,12.9v1h8v-1H11.3z M11.3,8.2v1h8v-1H11.3z"></path>
+          <path class="st1" d="M23.8,25H6.5c-0.7,0-1.2-0.5-1.2-1.2c0,0,0,0,0,0v-4.9H3v-1.2h2.2V14H3v-1.2h2.2V9.1H3V7.9h2.2V4.2
+ C5.2,3.6,5.8,3,6.4,3c0,0,0,0,0,0h17.3C24.4,3,25,3.5,25,4.2c0,0,0,0,0,0v19.6C25,24.4,24.5,25,23.8,25C23.8,25,23.8,25,23.8,25z
+ M11.3,17.6v1h8v-1H11.3z M11.3,12.9v1h8v-1H11.3z M11.3,8.2v1h8v-1H11.3z"></path>
+          <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="15.6066" y1="5.8925" x2="15.6066"
+            y2="25.0007">
+            <stop offset="0" style="stop-color: rgb(255, 255, 255);"></stop>
+            <stop offset="1" style="stop-color: rgb(255, 255, 255); stop-opacity: 0;"></stop>
+          </linearGradient>
+          <path class="st2"
+            d="M18,8.2h1.3v1h-3c-1.6,1-3.1,2.3-4.4,3.7h7.4v1h-8v-0.3c-2.7,3.2-4.5,7.1-5,11.3c0.1,0,0.2,0,0.3,0h17.3c0,0,0,0,0,0c0.7,0,1.2-0.6,1.2-1.2V5.9C22.5,6.3,20.1,7.1,18,8.2z M19.3,18.6h-8v-1h8V18.6z">
+          </path>
+        </svg>

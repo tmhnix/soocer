@@ -1,0 +1,15 @@
+body{
+    background:#314453;
+}
+#logo .userName{
+    font-weight:bold;
+    color:#013c66;
+    color: white;
+}
+#banner{
+    background:url(/assets/admin/images/header-1.png) no-repeat top left;
+}
+
+#spanNickNameID, #labelNickname{
+	color: white!important;
+}

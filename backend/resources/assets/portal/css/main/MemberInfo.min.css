@@ -1,0 +1,679 @@
+/*******************************************/
+/* Common */
+/*******************************************/
+/*******************************************/
+/* Buttons */
+/*******************************************/
+/*******************************************/
+/* Icons */
+/*******************************************/
+/*******************************************/
+/* Table */
+/*******************************************/
+/*******************************************/
+/* Popup */
+/*******************************************/
+/*******************************************/
+/* Tooltip */
+/*******************************************/
+/*******************************************/
+/* Tab */
+/*******************************************/
+/*******************************************/
+/* Dropdown */
+/*******************************************/
+/*******************************************/
+/* Message */
+/*******************************************/
+/*******************************************/
+/* Note */
+/*******************************************/
+/*******************************************/
+/* PT setting */
+/*******************************************/
+/*******************************************/
+/* Paging */
+/*******************************************/
+/*******************************************/
+/* Effect of dropdownlist */
+/*******************************************/
+/*******************************************/
+/* Effect of texbox */
+/*******************************************/
+/*******************************************/
+/* Effect of button */
+/*******************************************/
+body {
+  font-family: Roboto, Arial, Tahoma; }
+
+.clearBlock {
+  clear: both; }
+
+.float_l {
+  float: left; }
+
+.pt3 {
+  padding-top: 3px; }
+
+.pb3 {
+  padding-bottom: 3px; }
+
+.pt7 {
+  padding-top: 7px;
+  margin-bottom: 12px; }
+
+.hide {
+  display: none; }
+
+.nowrap {
+  white-space: nowrap; }
+
+.prewrap {
+  white-space: pre-wrap;
+  display: table; }
+
+/*******************************/
+/* Icons */
+/*******************************/
+.PTSport .PTSportCopiedActive:after, .PTSport .PTSportCopied:after, .PTSport .PTSportEdit:after, .PTSport .PTSportEditCopied:after, .BetTypeHeader2:after, .BetTypeHeaderActive:after, .BettingLimitHeaderCopied:after, .BettingLimitHeaderCopiedActive:after {
+  font-family: 'Iconalpha';
+  position: absolute;
+  font-size: 16px; }
+
+/*******************************/
+/* Fullmode */
+/*******************************/
+.PTGrid {
+  font-family: Roboto, Arial, Tahoma; }
+
+.minWidthCustomer {
+  width: 880px; }
+  .minWidthCustomer select, .minWidthCustomer input[type='text'], .minWidthCustomer input[type='number'], .minWidthCustomer input[type='password'], .minWidthCustomer input[type=button] {
+    border: 1px solid #cecece;
+    font-size: 11px;
+    height: 22px;
+    line-height: 22px;
+    margin-right: 0;
+    margin-left: 0;
+    -webkit-box-sizing: border-box;
+    -khtml-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box; }
+  .minWidthCustomer select {
+    padding: 0;
+    margin-top: 1px; }
+  .minWidthCustomer input[type=button] {
+    background-color: transparent;
+    border: none;
+    box-shadow: none; }
+  .minWidthCustomer .customerInfoBlock2 #selectedOne {
+    margin-left: 8px;
+    margin-right: 4px; }
+  .minWidthCustomer .customerInfoBlock2 #selectedThree {
+    margin-left: 4px; }
+
+.btnLef {
+  margin-bottom: 12px; }
+
+* {
+  -webkit-box-sizing: border-box;
+  -khtml-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.customerInfo {
+  background-color: #f8f0e5;
+  border-right: 1px solid #cecece;
+  float: left;
+  min-width: 840px;
+  padding: 0;
+  display: table; 
+  width: 100%;}
+  .customerInfo .usernameIsNotValid:before, .customerInfo .usernameIsValid:before {
+    top: 0;
+    margin-left: 4px; }
+  .customerInfo .PwdError:before, .customerInfo .PwdSuccess:before {
+    position: relative;
+    top: -3px;
+    margin-left: 4px; }
+
+.textBoxInfo {
+  float: left;
+  margin-top: 1px;
+  padding: 0;
+  width: 120px; }
+
+.textBoxCredit {
+  text-align: right; }
+
+.textBoxComm {
+  width: 60px !important;
+  margin: 0;
+  padding: 0;
+  height: 18px;
+  text-align: right; }
+
+[class^="customerInfoBlock"], [class^="customerInfoViewBlock"], [class^="commissionBlock"],
+[class^='PTSportLabe'], .BetTypeSelect, .BetTypeLabel, .BetTypeCheckbox, .BetTypeHeader,
+.BetTypeHeader2, .BetTypeHeaderActive, .BettingLimitHeaderCopied, .BettingLimitHeaderCopiedActive {
+  height: 30px;
+  line-height: 24px; }
+
+.headerTab, .headerBetSetting, .headerPositionTaking, .GroupLabel,
+[class^='BettingLimitItem'], [class^='BettingLimitHeader'] {
+  height: 30px;
+  line-height: 26px; }
+
+.GroupLabel2, .BettingLimitHeader2 {
+  height: 60px;
+  line-height: 56px; }
+
+[class^="customerInfoBlock"], [class^="customerInfoViewBlock"], [class^="commissionBlock"] {
+  float: left;
+  padding: 2px 4px;
+  display: table-cell;
+  -webkit-box-sizing: border-box;
+  -khtml-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.customerInfoBlock1 {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece;
+  text-align: right;
+  vertical-align: middle;
+  width: 216px; }
+
+.customerInfoBlock2 {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece;
+  text-align: left;
+  vertical-align: middle;
+  width: 304px; }
+  .customerInfoBlock2 .credit, .customerInfoBlock2 b, .customerInfoBlock2 select {
+    float: left; }
+  .customerInfoBlock2 b {
+    margin-left: 2px; }
+  .customerInfoBlock2 input[type='checkbox'] {
+    position: relative;
+    top: 2px;
+    left: -2px; }
+
+.customerInfoBlock2NoBorderLeft {
+  border-top: 1px solid #cecece;
+  text-align: right;
+  vertical-align: middle;
+  width: 336px; }
+
+.customerInfoBlock3 {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece;
+  text-align: right;
+  vertical-align: middle;
+  width: 127px; }
+
+.customerInfoBlock4 {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece;
+  vertical-align: middle;
+  width: 195px; }
+  .customerInfoBlock4 input[type='checkbox'] {
+    position: relative;
+    top: 2px;
+    left: -2px; }
+
+.customerInfoBlock5 {
+  border-top: 1px solid #cecece;
+  border-left: 1px solid #cecece;
+  vertical-align: middle;
+  width: 418px; }
+
+.customerInfoBlock6 {
+  font-weight: bold;
+  text-align: center;
+  width: 837px;
+  padding: 2px; }
+
+.customerInfoBlock7 {
+  border-top: 1px solid #cecece;
+  text-align: right;
+  width: 418px; }
+
+.customerInfoBlock4NoBorderLeft {
+  border-top: 1px solid #cecece;
+  vertical-align: middle;
+  width: 201px; }
+
+.customerInfoViewBlock1 {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece;
+  text-align: right;
+  vertical-align: middle;
+  width: 143px; }
+
+.customerInfoViewBlock2 {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece;
+  text-align: left;
+  vertical-align: middle;
+  width: 269px; }
+
+.customerInfoViewBlock2NoBorderLeft {
+  border-top: 1px solid #cecece;
+  text-align: right;
+  vertical-align: middle;
+  width: 270px; }
+
+.commission {
+  background-color: #f8f0e5;
+  border: 1px solid #cecece;
+  float: left;
+  min-width: 841px;
+  width: 100% }
+  .commission td {
+    padding: 0 4px; }
+  .commission .textBoxComm {
+    position: relative;
+    top: -1px; }
+
+.commissionHeader {
+  color: #333;
+  font-weight: bold; }
+
+.commissionBlock1 {
+  border-top: 1px solid #cecece;
+  vertical-align: middle;
+  width: 263px;
+  text-align: right; }
+
+.commissionBlock2 {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece;
+  text-align: center;
+  vertical-align: middle;
+  width: 289px; }
+
+.commissionViewBlock1 {
+  border-top: 1px solid #cecece;
+  vertical-align: middle;
+  width: 230px;
+  text-align: right; }
+
+.commissionViewBlock2 {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece;
+  text-align: center;
+  vertical-align: middle;
+  width: 200px; }
+
+.commissionGroup {
+  float: left;
+  white-space: nowrap; }
+
+.groupCom {
+  text-align: right;
+  padding-right: 5px; }
+
+.widthGroup {
+  width: 70px; }
+
+.headerPositionTaking .infoIco:after {
+  color: #fff;
+  font-weight: normal;
+  float: right; }
+
+.headerTab, .headerBetSetting, .headerPositionTaking {
+  background-color: #666;
+  color: #fff;
+  width: 100%;
+  font-weight: bold;
+  padding: 0 8px; }
+
+.transferCondition {
+  background-color: #f8f0e5;
+  border-bottom: 1px solid #cecece;
+  border-left: 1px solid #cecece;
+  border-right: 1px solid #cecece;
+  float: left;
+  min-width: 840px;
+  line-height: 30px; }
+  .transferCondition input[type='checkbox'], .transferCondition input[type='radio'] {
+    position: relative;
+    top: 2px; }
+
+.headerPositionTaking {
+  min-width: 844px;
+  width: 902px; }
+
+.positionTaking {
+  border-bottom: 1px solid #cecece;
+  border-left: 1px solid #cecece;
+  border-right: 1px solid #cecece;
+  float: left;
+  min-width: 902px;
+  padding: 12px; 
+  width: 100%;}
+
+.line {
+  background-color: #cecece;
+  height: 1px;
+  margin: 2px 0;
+  min-width: 842px; }
+
+.headerBetSetting {
+  width: 843px; }
+
+[class^='PTSportLabe'] {
+  background-color: #666;
+  padding-right: 72px;
+  white-space: nowrap; }
+
+.PTSportLabel {
+  border-left: 1px solid #cecece;
+  border-top: 0 none;
+  width: 230px; }
+
+.PTSportLabel2 {
+  border-left: 1px solid #cecece;
+  border-top: 0 none;
+  width: 207px; }
+
+.PTSport {
+  background: #666;
+  border-bottom: 1px solid #cecece;
+  border-right: 1px solid #cecece;
+  border-top: 1px solid #cecece;
+  position: relative;
+  float: none;
+  display: table; 
+  width: 100%;}
+  .PTSport input[type="checkbox"] {
+    margin-top: 8px;
+    display: inline-block; }
+  .PTSport .PTSportCopiedActive, .PTSport .PTSportCopied, .PTSport .PTSportEdit, .PTSport .PTSportEditCopied {
+    background: none;
+    float: right;
+    margin-top: 4px;
+    width: 22px; }
+    .PTSport .PTSportCopiedActive:after, .PTSport .PTSportCopied:after, .PTSport .PTSportEdit:after, .PTSport .PTSportEditCopied:after {
+      position: relative;
+      top: 1px; }
+  .PTSport .PTSportCopied:after {
+    color: #fff;
+    content: '\e936'; }
+  .PTSport .PTSportCopiedActive:after {
+    color: #67b4fb;
+    content: '\e936'; }
+  .PTSport .PTSportEdit:after, .PTSport .PTSportEditCopied:after {
+    color: #fff;
+    content: '\e938';
+    font-size: 18px; }
+  .PTSport .PTSportEditCopied:after {
+    color: #faad3f; }
+  .PTSport .BetTypeSelect .BtnPTDown, .PTSport .BetTypeSelect .BtnPTUp, .PTSport .BetTypeSelect .BtnPTSub, .PTSport .BetTypeSelect .BtnPTAdd {
+    background: url(Images/buttons.png) no-repeat;
+    display: inline-block;
+    height: 22px;
+    margin-right: 2px;
+    margin-top: 2px;
+    padding: 0; }
+  .PTSport .BetTypeSelect .BtnPTDown {
+    background-position: -3px -5px;
+    margin-right: 2px;
+    margin-left: 2px;
+    width: 22px; }
+    .PTSport .BetTypeSelect .BtnPTDown:hover {
+      background-position: -3px -33px; }
+  .PTSport .BetTypeSelect .BtnPTUp {
+    background-position: -33px -5px;
+    width: 23px; }
+    .PTSport .BetTypeSelect .BtnPTUp:hover {
+      background-position: -33px -33px; }
+  .PTSport .BetTypeSelect .BtnPTSub {
+    background-position: -99px -5px;
+    width: 24px; }
+    .PTSport .BetTypeSelect .BtnPTSub:hover {
+      background-position: -99px -33px; }
+  .PTSport .BetTypeSelect .BtnPTAdd {
+    background-position: -64px -5px;
+    width: 25px; }
+    .PTSport .BetTypeSelect .BtnPTAdd:hover {
+      background-position: -64px -33px; }
+
+.PTGroup {
+  background-color: #f8f0e5; }
+
+.PTGroup2 {
+  background-color: #f8f0e5;
+  float: none; }
+
+.BetTypeSelect, .BetTypeLabel, .BetTypeCheckbox {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece; }
+
+.BetTypeHeader {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece;
+  background-color: #fae7d3; }
+
+.BetTypeHeader2, .BetTypeHeaderActive {
+  background: none;
+  position: relative; }
+  .BetTypeHeader2:after, .BetTypeHeaderActive:after {
+    right: 8px;
+    content: '\e936'; }
+
+.BetTypeHeader2 {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece; }
+  .BetTypeHeader2:after {
+    color: #333; }
+
+.PTBox .PTSelect {
+  vertical-align: top; }
+
+.BetTypeHeaderActive {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece; }
+  .BetTypeHeaderActive:after {
+    color: #368ad8; }
+
+.BetTypeInactive {
+  opacity: 0.6; }
+
+.BetTypeLabel {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece; }
+
+[class^='GroupLabel'] {
+  background-color: #fae7d3;
+  padding: 0 4px; }
+
+.GroupLabel {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece; }
+
+.GroupLabel2 {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece;
+  line-height: 68px; }
+
+.GroupSetLabel {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece;
+  min-width: 60px;
+  background-color: #fae7d3;
+  padding: 0 4px; }
+
+.BettingLimit {
+  background: #f8f0e5;
+  border-bottom: 1px solid #cecece;
+  border-right: 1px solid #cecece; }
+
+.BettingLimit4 {
+  border-bottom: 1px solid #cecece;
+  border-right: 1px solid #cecece; }
+
+[class^='BettingLimitTextBox'] {
+  float: left;
+  margin-top: 2px; }
+
+.BettingLimitTextBox {
+  width: 110px !important; }
+
+.BettingLimitTextBox4 {
+  width: 186px !important; }
+
+.BettingLimitTextBox9 {
+  width: 90px !important; }
+
+.BettingLimitTextBox5 {
+  width: 137px !important; }
+
+[class^='BettingLimitItem'] {
+  background-color: #f8f0e5; }
+
+.BettingLimitItem {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece;
+  min-width: 124px; }
+
+.BettingLimitItem4 {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece; }
+
+.BettingLimitItem5 {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece; }
+
+.BettingLimitItem9 {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece; }
+
+.BettingLimitItem92 {
+  border-left: 0;
+  border-top: 1px solid #cecece;
+  min-width: 85px; }
+
+.BettingLimitItem2 {
+  background-color: #f8f0e5;
+  border-top: 1px solid #cecece;
+  min-width: 116px; }
+
+.BettingLimitHeader {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece; }
+
+.BettingLimitHeader2 {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece;
+  padding: 2px; }
+
+.BettingLimitHeaderCopied, .BettingLimitHeaderCopiedActive {
+  background: none;
+  position: relative; }
+  .BettingLimitHeaderCopied:after, .BettingLimitHeaderCopiedActive:after {
+    right: 4px;
+    content: '\e936'; }
+
+.BettingLimitHeaderCopied {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece; }
+  .BettingLimitHeaderCopied:after {
+    color: #333; }
+
+.BettingLimitHeaderCopiedActive {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece; }
+  .BettingLimitHeaderCopiedActive:after {
+    color: #67b4fb; }
+
+[class^='BettingLimitHeaderTop'] {
+  height: 30px;
+  line-height: 30px; }
+
+.BettingLimitHeaderTop {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece;
+  min-width: 240px; }
+
+.BettingLimitHeaderTop9 {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece;
+  min-width: 180px; }
+
+.BettingLimitHeaderTop4 {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece; }
+
+.BettingLimitHeaderTop5 {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece; }
+
+.BettingLimitLabel {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece; }
+
+.BettingLimitLabel1 {
+  border-left: 1px solid #cecece;
+  border-top: 1px solid #cecece; }
+
+.PTBoxRightBorder .BetTypeHeader, .PTBoxRightBorder .BetTypeSelect, .PTBoxRightBorder .BetTypeLabel {
+  border-right: 1px solid #cecece; }
+
+.BetTypeBottomBorder {
+  border-bottom: 1px solid #cecece;
+  height: 30px !important; }
+
+.PTGroupSet {
+  display: table; }
+  .PTGroupSet .GroupSetLabel, .PTGroupSet .PTGroup2 {
+    display: table-cell;
+    float: none; }
+
+.PTGroupSet2 {
+  clear: both;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  background-color: #f8f0e5; }
+
+.ul-position li {
+  line-height: 24px; }
+
+#fHint {
+  min-height: 40px; }
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .textBoxInfo {
+    margin-top: 2px; }
+  [class^='BettingLimitTextBox'] {
+    float: left;
+    margin-top: 3px; }
+  .minWidthCustomer {
+    width: 880px; }
+    .minWidthCustomer select, .minWidthCustomer input[type='text'], .minWidthCustomer input[type='number'], .minWidthCustomer input[type='password'], .minWidthCustomer input[type=button] {
+      height: 24px;
+      line-height: 24px; }
+    .minWidthCustomer select {
+      margin-top: 2px;
+      padding: 4px 2px; }
+  .PTSport .PTSportCopiedActive, .PTSport .PTSportCopied, .PTSport .PTSportEdit, .PTSport .PTSportEditCopied {
+    margin-top: 4px; }
+  .PTSport .BetTypeSelect .BtnPTDown, .PTSport .BetTypeSelect .BtnPTUp, .PTSport .BetTypeSelect .BtnPTSub, .PTSport .BetTypeSelect .BtnPTAdd {
+    margin-top: 3px; }
+  [class^="customerInfoBlock"], [class^="customerInfoViewBlock"], [class^="commissionBlock"],
+  [class^='PTSportLabe'], .BetTypeSelect, .BetTypeLabel, .BetTypeCheckbox, .BetTypeHeader,
+  .BetTypeHeader2, .BetTypeHeaderActive, .BettingLimitHeaderCopied, .BettingLimitHeaderCopiedActive {
+    height: 34px;
+    line-height: 28px; }
+  .headerTab, .headerBetSetting, .headerPositionTaking, .GroupLabel,
+  [class^='BettingLimitItem'], [class^='BettingLimitHeader'] {
+    height: 34px;
+    line-height: 34px; }
+  .GroupLabel2, .BettingLimitHeader2 {
+    height: 68px;
+    line-height: 64px; } }

@@ -1,0 +1,194 @@
+.normal-b {
+    margin: 1px 0;
+    border-top: 1px solid #bbbbbb;
+}
+
+.normal-b .event+div,
+.normal-b .time,
+.normal-b .others,
+.normal-b .multiOdds+.multiOdds,
+.hdpou-a .normal-b .multiOdds>div:nth-of-type(5),
+.hdpou-g .normal-b .multiOdds>div:nth-of-type(4),
+.hdpouSingle-a .normal-b .multiOdds>div:nth-of-type(n+2),
+.hdpouFullHalf-a .normal-b .multiOdds>div:nth-of-type(n+2),
+.onextwo-a .normal-b>div:nth-last-of-type(3),
+.correctScore-a .normal-b>div:nth-last-of-type(6),
+.correctScore-d .normal-b>div:nth-last-of-type(5),
+.correctScore-b .normal-b>div:nth-last-of-type(3),
+.oddEven-a .normal-b>div:nth-last-of-type(2),
+.totalGoal-a .normal-b>div:nth-of-type(7),
+.halfTimeFullTime-a .normal-b>div:nth-last-of-type(3),
+.halfTimeFullTime-a .normal-b>div:nth-last-of-type(6),
+.firstGoalLastGoal-a .normal-b>div:nth-last-of-type(3),
+.racing-a .normal-b>div,
+.racing-b .normal-b>div,
+.racing-c .normal-b>div,
+.racing-d .normal-b>div,
+.numberGame-a .normal-b>div,
+.numberGame-b .normal-b>div,
+.numberGame-c .normal-b>div,
+.numberGame-d .normal-b>div,
+.lotto-c .normal-b>div {
+    border: none;
+}
+
+.normal-a .event+div,
+.normal-a .time,
+.normal-a .others,
+.normal-a .multiOdds+.multiOdds,
+.hdpou-a .normal-a .multiOdds>div:nth-of-type(5),
+.hdpou-g .normal-a .multiOdds>div:nth-of-type(4),
+.hdpouSingle-a .normal-a .multiOdds>div:nth-of-type(n+2),
+.hdpouFullHalf-a .normal-a .multiOdds>div:nth-of-type(n+2),
+.onextwo-a .normal-a>div:nth-last-of-type(3),
+.correctScore-a .normal-a>div:nth-last-of-type(6),
+.correctScore-d .normal-a>div:nth-last-of-type(5),
+.correctScore-b .normal-a>div:nth-last-of-type(3),
+.oddEven-a .normal-a>div:nth-last-of-type(2),
+.totalGoal-a .normal-a>div:nth-of-type(7),
+.halfTimeFullTime-a .normal-a>div:nth-last-of-type(3),
+.halfTimeFullTime-a .normal-a>div:nth-last-of-type(6),
+.firstGoalLastGoal-a .normal-a>div:nth-last-of-type(3),
+.racing-a .normal-a>div,
+.racing-b .normal-a>div,
+.racing-c .normal-a>div,
+.racing-d .normal-a>div,
+.numberGame-a .normal-a>div,
+.numberGame-b .normal-a>div,
+.numberGame-c .normal-a>div,
+.numberGame-d .normal-a>div,
+.lotto-c .normal-a>div {
+    border: none;
+}
+
+.oddsTable .live-a>div:first-child,
+.oddsTable .live-b>div:first-child,
+.oddsTable .normal-a>div:first-child,
+.oddsTable .normal-b>div:first-child,
+.oddsTable .mmr-a>div:first-child,
+.oddsTable .mmr-b>div:first-child,
+.numberGame-a .live-a>div:nth-last-of-type(3),
+.numberGame-a .live-b>div:nth-last-of-type(3),
+.numberGame-a .normal-a>div:nth-last-of-type(3),
+.numberGame-a .normal-b>div:nth-last-of-type(3),
+.numberGame-a .mmr-a>div:nth-last-of-type(3),
+.numberGame-a .mmr-b>div:nth-last-of-type(3),
+.numberGame-a .live-a>div:nth-last-of-type(5),
+.numberGame-a .live-b>div:nth-last-of-type(5),
+.numberGame-a .normal-a>div:nth-last-of-type(5),
+.numberGame-a .normal-b>div:nth-last-of-type(5),
+.numberGame-a .mmr-a>div:nth-last-of-type(5),
+.numberGame-a .mmr-b>div:nth-last-of-type(5),
+.numberGame-d .live-a>div:nth-last-of-type(2),
+.numberGame-d .live-b>div:nth-last-of-type(2),
+.numberGame-d .normal-a>div:nth-last-of-type(2),
+.numberGame-d .normal-b>div:nth-last-of-type(2),
+.numberGame-d .mmr-a>div:nth-last-of-type(2),
+.numberGame-d .mmr-b>div:nth-last-of-type(2),
+.numberGame-d .live-a>div:nth-last-of-type(5),
+.numberGame-d .live-b>div:nth-last-of-type(5),
+.numberGame-d .normal-a>div:nth-last-of-type(5),
+.numberGame-d .normal-b>div:nth-last-of-type(5),
+.numberGame-d .mmr-a>div:nth-last-of-type(5),
+.numberGame-d .mmr-b>div:nth-last-of-type(5),
+.numberGame-d .live-a>div:nth-last-of-type(7),
+.numberGame-d .live-b>div:nth-last-of-type(7),
+.numberGame-d .normal-a>div:nth-last-of-type(7),
+.numberGame-d .normal-b>div:nth-last-of-type(7),
+.numberGame-d .mmr-a>div:nth-last-of-type(7),
+.numberGame-d .mmr-b>div:nth-last-of-type(7),
+.lotto-c .live-a>div:nth-last-of-type(6),
+.lotto-c .live-b>div:nth-last-of-type(6),
+.lotto-c .normal-a>div:nth-last-of-type(6),
+.lotto-c .normal-b>div:nth-last-of-type(6),
+.lotto-c .mmr-a>div:nth-last-of-type(6),
+.lotto-c .mmr-b>div:nth-last-of-type(6) {
+    border-right: 1px solid #bbbbbb;
+}
+
+.multiOdds .event {
+    border-right: 1px solid #bbbbbb; 
+}
+
+.oddsTable .oddsBet {
+    background: #ffffff5c;
+    /*text-align: center;*/
+}
+
+.multiOdds .odds:nth-child(4),
+.multiOdds .odds:nth-child(7) {
+    position: relative;
+}
+
+.multiOdds .odds:nth-child(4)::before,
+.multiOdds .odds:nth-child(7)::before {
+    content: "";
+    border-right: 1px solid #bbbbbb;
+    position: absolute;
+    height: 100%;
+    width: 1px;
+    right: 0;
+    visibility: initial;
+}
+
+body,
+.oddsTable {
+    font-family: "-apple-system", "BlinkMacSystemFont", "Helvetica Neue", "Segoe UI", "Tahoma", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Open Sans", "sans-serif", "Microsoft Yahei";
+}
+
+body {
+    font-size: 0.75em !important;
+}
+
+loading--small {
+    padding: 2px;
+}
+
+.loading--small .loading__spiner {
+    width: 24px;
+    height: 24px;
+}
+
+.loading--small .loading__circle-1::before,
+.loading--small .loading__circle-2::before {
+    border-width: 2px;
+}
+
+.loading--secondary {
+    border-color: #bbbbbb;
+}
+
+.loading--bg {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.loading--bg-primary {
+    border-color: #ffffff;
+    background-color: rgba(85, 116, 167, 0.6);
+}
+
+.loading--percentage .loading__spiner {
+    width: 84px;
+    height: 84px;
+}
+
+.loading--percentage .loading__circle-1::before,
+.loading--percentage .loading__circle-2::before {
+    border-width: 4px;
+}
+
+.loading--percentage .loading__text {
+    color: #5574a7;
+    position: absolute;
+    font-size: 1.75em;
+    font-weight: bold;
+    align-self: center;
+}
+.account {
+    position: absolute;
+    top: 8.75em;
+    bottom: 3.9em;
+    left: 0;
+    right: 0;
+    overflow: auto;
+}

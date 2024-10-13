@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="ico_account"
+            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            viewBox="0 0 28.4 28" enable-background="new 0 0 28.4 28;" xml:space="preserve">
+            <linearGradient id="PathAccount_8_2_" gradientUnits="userSpaceOnUse" x1="-38.45" y1="42.4091"
+              x2="-38.45" y2="41.4091" gradientTransform="matrix(20 0 0 -22 783 936)">
+              <stop className="c-icon-gradient" offset="0"></stop>
+              <stop className="c-icon-gradient c-icon-gradient--dark" offset="1"></stop>
+            </linearGradient>
+            <path id="PathAccount_8" className="st0"
+              d="M4,25v-2.3c0-5.1,4.5-9.2,10-9.2s10,4.1,10,9.2V25H4z M9.5,7.5C9.5,5,11.5,3,14,3l0,0 c2.5,0,4.5,2,4.5,4.5l0,0c0,2.5-2,4.5-4.5,4.5S9.5,10,9.5,7.5z">
+            </path>
+            <g>
+              <defs>
+                <path id="PathAccount_8_1_"
+                  d="M4,25v-2.3c0-5.1,4.5-9.2,10-9.2s10,4.1,10,9.2V25H4z M9.5,7.5C9.5,5,11.5,3,14,3l0,0 c2.5,0,4.5,2,4.5,4.5l0,0c0,2.5-2,4.5-4.5,4.5S9.5,10,9.5,7.5z">
+                </path>
+              </defs>
+              <clipPath id="PathAccount_8_3_">
+                <use xlink:href="#PathAccount_8_1_" style="overflow: visible;"></use>
+              </clipPath>
+              <linearGradient id="PathAccount_4_1_" gradientUnits="userSpaceOnUse" x1="-38.2763" y1="42.2949"
+                x2="-38.2763" y2="41.2949" gradientTransform="matrix(18.438 0 0 -18.437 724.8816 787.3545)">
+                <stop offset="0" style="stop-color: rgb(255, 255, 255);"></stop>
+                <stop offset="1" style="stop-color: rgb(255, 255, 255); stop-opacity: 0;"></stop>
+              </linearGradient>
+              <path id="PathAccount_4" className="st1" d="M9.9,26c0-10.2,8.3-18.4,18.4-18.4l0,0V26H9.9z"></path>
+            </g>
+          </svg>

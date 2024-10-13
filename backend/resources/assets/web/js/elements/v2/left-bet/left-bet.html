@@ -1,0 +1,210 @@
+<div class="widgetPanel group betSlip active" ng-class="{'collapse': !settings.show}">
+  <div class="glyphIcon icon-widgetCollapse" title="Collapse the Widget Panel" ></div>
+  <div class="heading icon-betSlip" ng-class="{'current': settings.menu == 'bet'}" title="Phiếu Đặt Cược" ng-click="onSwithMenu('bet')">
+    <div class="text" >Phiếu Đặt Cược</div>
+  </div>
+  <div class="heading icon-betList" ng-class="{'current': settings.menu == 'betList'}" title="Bảng Cược" ng-click="onSwithMenu('betList')">
+    <div class="text" >Bảng Cược</div>
+    <!-- <div class="alertArea"><div class="alert">3</div></div> -->
+  </div>
+  <div class="contentArea" ng-if="settings.menu == 'betList'">
+    <left-bet-wait-v2></left-bet-wait-v2>
+  </div>
+  <div class="contentArea" ng-if="settings.menu == 'bet'">
+    <div class="nav-widgetPanel  icon-betSlip-single twoColum" >
+      <div class="item active icon-betSlip-single" ng-class="{'active': settings.type == 'single'}" title="Đơn" ng-click="switchBettingMode('single')">
+        <span class="itemContent" >
+          <span class="text">Đơn</span>
+        </span>
+      </div>
+      <div class="item  icon-betSlip-parlay" ng-class="{'active': settings.type == 'multiple'}" title="Cá cược tổng hợp" ng-click="switchBettingMode('multiple')">
+        <span class="itemContent" >
+          <span class="text" >Cá cược tổng hợp</span>
+          <!-- <div class="alertArea"><div class="alert">3</div></div> -->
+        </span>
+      </div>
+    </div>
+
+    <div id="mainSection" ng-if="!model.event" class="mainSection empty"><div class="scroll-panel"><div class="scroll-content"><div class="ticket"><div class="betInfoArea"><div class="betInfo">Phiếu cược của bạn đang trống. Vui lòng nhấn vào tỷ lệ cược trong bảng để chọn cược</div></div></div></div><div class="v-scrollbar-track"><div></div></div></div></div>
+
+    <div id="mainSection" class="mainSection single" ng-show="settings.type == 'single' && !!model.event">
+      <div class="scroll-panel" >
+        <div class="scroll-content" >
+          <div class="ticket" >
+            <div class="betInfoArea" >
+              <div class="betInfo-live statusChanged" >
+                <div class="betType" ng-if="model.bet_type!='correct_score'">
+                  <span >Bóng đá</span>
+                  <span > / </span>
+                  <span >{{model.odd_type}}</span>
+                </div>
+                <div class="betType" ng-if="model.bet_type=='correct_score'">
+                  <span >{{model.odd_type}}</span>
+                  <span > - </span>
+                  <b >[{{model.type}}]</b>
+                </div>
+                <div class="betDetial" >
+                  <div class="name" ng-if="model.bet_type!='correct_score'">{{model.odd_name}}</div>
+                  <div class="oddsDetail" >
+                    <span class="selectorName" ng-if="model.bet_type!='correct_score'">
+                      <span>{{model | handicapValue}}</span>
+                    </span>
+                    <span class="selectorScore">[{{model.event.ss}}]</span>
+                    <span class="selectorOther">@</span>
+                    <span class="selectorOdds" ng-class="{'accent': model.bet_value < 0}">{{model.bet_value | number:2}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="betOtherArea" >
+              <div class="betInfoSub" >
+                <label class="" >
+                  <input type="checkbox" ng-model="settings.auto" checked="" ng-change="onChange()">
+                  <div class="checkbox" ></div>
+                  <span>Tự làm mới</span>
+                  <span class="countdown" >
+                    <span>(</span>
+                    <span>{{number}}</span>
+                    <span>)</span>
+                  </span>
+                </label>
+              </div>
+              <div class="matchInfo-line" >
+                <div class="homeName" title="Sport Club do Recife">{{model.event.home}}</div>
+                <div class="awayName" title="Botafogo RJ" >{{model.event.away}}</div>
+                <div class="leagueName" title="{{model.event.league_name}}">{{model.event.league_name}}</div>
+              </div>
+              <form ng-submit="betSubmit()" autocomplete="off" novalidate>
+              <div>
+                <div class="stakeArea" >
+                  <div class="entry" >
+                    <span class="currency" >UT</span>
+                    <span class="content" >
+                      <input id="BPstake" ng-model="model.bet_amount" name="BPstake">
+                      <button class="smallBtn special icon-clear" title="Xóa nội dung" ></button>
+                    </span>
+                  </div>
+                  <noscript ></noscript>
+                  <div class="entrySub" >
+                    <label >
+                      <input type="checkbox" checked="" >
+                      <div class="checkbox" ></div>
+                      <span >Tự nhận tỷ lệ cược tốt</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="entryInfo" >
+                  <div >
+                    <span class="title" >Thanh Toán</span>
+                    <span class="content" >
+                      <span>{{model | payAmount | number:2}}</span>
+                      <div class="smallBtn primary icon-scoreMap" title="Bản đồ điểm" ></div>
+                    </span>
+                  </div>
+                  <div >
+                    <span class="title" >Tối Thiểu</span>
+                    <span class="content">{{data.bongdamin | number}}</span>
+                  </div>
+                  <div >
+                    <span class="title" >Tối đa</span>
+                    <span class="content">{{data.bongdamax | number}}</span>
+                  </div>
+                </div>
+                <div class="btnArea" >
+                  <button class="largeBtn" type="submit">Đặt Cược</button>
+                  <button class="largeBtn secondary" type="button" ng-click="backToHome()">Hủy</button>
+                </div>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<!-- payload -->
+<div id="mainSection" class="mainSection parlay" ng-show="settings.type == 'multiple' && !!model.event">
+  <div class="scroll-panel">
+    <div class="scroll-content">
+      <div class="ticket">
+        <div class="betInfoArea">
+          <div class="betInfo" ng-class="{'betInfo-live': valueX.event.time_status == 1}" mul-bet-item-v2 on-delete="onDelete" item="valueX" ng-repeat="(key, valueX) in mulBets"></div>
+        </div>
+        <div class="betOtherArea" ng-show="mulBets.length > 2">
+          <form name="betform" id="betform" ng-submit="betMulSubmit()" autocomplete="off" novalidate>
+          <div>
+            <div class="entryInfo">
+              <label title="Tự động chấp nhận mọi tỷ lệ cược">
+                <input type="checkbox" value="on">
+                  <div class="checkbox"></div>
+                  <!-- react-text: 501 -->Tự động chấp nhận mọi tỷ lệ cược
+                  <!-- /react-text -->
+                </label>
+              </div>
+              <div class="betInfoSub">
+                <div class="titleGroup">
+                  <span class="title">Parlay Tutorial</span>
+                  <div title="Help" class="smallBtn primary icon-help"></div>
+                </div>
+                </div>
+                <ul class="collapsible comboList">
+                    <li class="active ">
+                        <div class="innerContent ">
+                          <div class="entry">
+                            <span class="currency">UT</span>
+                            <span class="content">
+                              <input id="mulStake" ng-model="mulModel.bet_amount" autofocus name="tien" autocomplete="off">
+                                <div class="smallBtn special icon-clear" title="Xóa nội dung"></div>
+                              </span>
+                            </div>
+                            <div class="entryInfoMini">
+                              <span class="title">
+                                <!-- react-text: 568 -->Tối đa
+                                <!-- /react-text -->
+                                <!-- react-text: 569 -->: 
+                                <!-- /react-text -->
+                              </span>
+                              <span class="content">1,000</span>
+                            </div>
+                            <!-- react-empty: 591 -->
+                          </div>
+                        </li>
+                        </ul>
+                        <div>
+                            <div class="entryInfo">
+                              <div>
+                                <span class="title">Tổng đặt cược</span>
+                                <span class="content">{{(mulModel.bet_total = (mulBets | betsValue)) | number:2}}</span>
+                              </div>
+                              <div>
+                                <span class="title">Tổng tiền đặt cược</span>
+                                <span class="content">{{mulModel.bet_amount | numberPretty:2}}</span>
+                              </div>
+                              <div>
+                                <span class="title">Tiền thanh toán tối đa</span>
+                                <span class="content">{{data.bongdamin | number}}</span>
+                              </div>
+                              <div>
+                                <span class="title">Tối Thiểu</span>
+                                <span class="content">{{data.bongdamax | number}}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="btnArea">
+                          <button class="largeBtn" type="submit">Đặt Cược</button>
+                          <button class="largeBtn secondary" type="button" ng-click="backToHome()">Hủy</button>
+                        </div>
+                      </div>
+                      <!-- react-empty: 460 -->
+                      <!-- react-empty: 461 -->
+                    </div>
+                  </div>
+                </div>
+                </form>
+              </div>
+              <!-- End payload -->
+  </div>
+  <div class="bottomArea" ></div>
+</div>

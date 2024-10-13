@@ -1,0 +1,14 @@
+<div  class="BetInfo" ng-class="{'red': item.event.time_status == 1}"> 
+	<!-- F8F8F8 style="background-color:#FFCCBC" -->
+	<span class="TextStyle01">
+		<div ng-click="onDeleteItem();" class="btnIcon right"><span class="icon-close"></span></div>
+		Bóng đá / {{item.odd_type}}
+	</span>
+	<br>  <span class="FavTeamClass">{{item.odd_name}}</span><br>
+	<span class="TextStyle03">{{item | handicapValue}}</span>
+	<span class="TextStyle01">[{{item.event.ss}}]</span><span class="TextStyle03"> @ </span>
+	<span class="UdrDogOddsClassBetProcess">{{item.bet_value | numberOdd:2}}</span>
+	<div class="TextStyle04 "></div>
+	<div class="TextStyle04">{{item.event.home}} -vs- {{item.event.away}}</div>
+	<div class="TextStyle04"></div>
+</div>

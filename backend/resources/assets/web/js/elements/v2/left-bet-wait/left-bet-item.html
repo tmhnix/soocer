@@ -1,0 +1,68 @@
+<div  ng-if="value.bet_kind == 'normal'">
+ <div class="betInfo">
+  <div class="mainInfo">
+   <div class="betType" ng-if="value.bet_type_raw!='correct_score'">Bóng đá / {{::value.bet_type}}</div>
+   <div class="betType" ng-if="value.bet_type_raw=='correct_score'">{{::value.bet_type}} - <b>[{{::value.type}}]</b></div>
+   <div class="betDetial">
+    <div class="name"  ng-if="value.bet_type_raw!='correct_score'">
+     <span>{{::value.bet_name}}</span>
+     <div class="smallBtn  primary icon-scoreMap" title="Bản đồ điểm"></div>
+  </div>
+  <div class="oddsDetail">
+   <span class="selectorName" ng-if="value.bet_type_raw!='correct_score'">{{::value.bet_odd}}</span>
+     <span class="selectorScore">[{{::value.ss}}]</span>
+     <span>
+      <span class="selectorOther">@</span>
+      <span class="selectorOdds" ng-class="{'accent': value.bet_value < 0}">{{::value.bet_value | number:2}}</span>
+   </span>
+   <div class="stacks">{{value.bet_amount | numberPretty:2}}</div>
+</div>
+</div>
+</div>
+<div class="matchInfo-line">
+   <div class="homeName teamName-pointer" title="{{::value.home}}">{{::value.home}}</div>
+   <div class="awayName teamName-pointer" title="{{::value.away}}">{{::value.away}}</div>
+</div>
+<div class="ticketInfo">
+   <div class="ticketID">ID:{{::value.id}}</div>
+   <div class="ticketStatus">{{::value.status_name}}</div>
+</div>
+</div>
+</div>
+
+<div ng-if="value.bet_kind == 'group'" class="betInfo">
+ <div class="TextStyle01">Cá cược tổng hợp
+ <div class="primary stacks">{{::value.bet_amount | numberPretty:2}}</div>
+ </div>
+ <div class="" ng-class="{'line-through': bet.status == 'cancel'}" ng-repeat="(key, bet) in value.bets">
+  <div class="betInfo">
+    <div class="mainInfo">
+     <div class="betType">Bóng đá / {{::bet.bet_type}}</div>
+     <div class="betDetial">
+      <div class="name">
+       <span>{{::bet.bet_name}}</span>
+     </div>
+     <div class="oddsDetail">
+       <span class="selectorName">{{::bet.bet_odd}}</span>
+       <span class="selectorScore">[{{::bet.ss}}]</span>
+       <span>
+        <span class="selectorOther">@</span>
+        <span class="selectorOdds" ng-class="{'accent': bet.bet_value < 0}">{{::bet.bet_value | number:2}}</span>
+      </span>
+    </div>
+  </div>
+</div>
+<div class="matchInfo-line">
+ <div class="homeName teamName-pointer" title="{{::bet.home}}">{{::bet.home}}</div>
+ <div class="awayName teamName-pointer" title="{{::value.away}}">{{::bet.away}}</div>
+</div>
+</div>
+</div>
+<div class="ticketInfo">
+   <div class="ticketID">Rate:  {{::value.rate}}</div>
+</div>
+<div class="ticketInfo">
+   <div class="ticketID">ID:{{::value.id}}</div>
+   <div class="ticketStatus">{{::value.status_name}}</div>
+</div>
+</div>

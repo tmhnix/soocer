@@ -1,0 +1,985 @@
+<table id="tmplTable" width="100%" cellpadding="0" cellspacing="0" border="0">
+   <thead>
+      <tr>
+      </tr>
+   </thead>
+   <tbody>
+      <tr></tr>
+      <tr>
+         <td class="numbeGame live-double">
+            <table border="0" cellpadding="0" cellspacing="0" ng-repeat="(key, value) in list">
+               <tbody>
+                  <tr>
+                     <td>
+                        <div class="board">
+                           <div class="tabtitle">
+                              <% value.name %>
+                           </div>
+                           <ul class="panelInfo row">
+                              <li style="width: 23%"><span class="title text-ellipsis" title="Event Number">Lựa Chọn:</span><span class="detail">Số.  <% value.code %></span></li>
+                              <li style="width: 21%"><span class="title" title="Ratio of Over/Under">Over/Under:</span><span class="detail"><span class="">[<% value.data[21] + '-' + value.data[22] %>]</span></span> </li>
+                              <li style="width: 20%"><span class="title" title="Ratio of Odd/Even">Ratio of O/E:</span><span class="detail"><span class="">[<% value.data[23] + '-' + value.data[24] %>]</span></span> </li>
+                              <li style="width: 25%"><span class="title" title="No. of The Last Drawn Ball">Last Drawn Ball:</span><span class="detail IsLive"><strong><% value.last_ball %></strong></span></li>
+                           </ul>
+                        </div>
+                        <div class="infoBar musicFilter">
+                           <ul class="infoList right">
+                              <li>
+                                 <a id="BingoPos_' + value.code %>" title="Kickoff Sequence">
+                                 <span class="iconOdds info"></span>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a title="Kết quả">
+                                 <span class="iconOdds stats">
+                                 </span>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a id="BingoStreamingTV" title="Truyền Hình Trực Tiếp">
+                                    <div class="btnBlock">
+                                       <span class="iconOdds tv"></span>
+                                       <div class="textBlock">Music TV</div>
+                                       <div class="music-wave">
+                                          <span class="music-wave__bar"></span>
+                                          <span class="music-wave__bar"></span>
+                                          <span class="music-wave__bar"></span>
+                                          <span class="music-wave__bar"></span>
+                                       </div>
+                                    </div>
+                                 </a>
+                              </li>
+                           </ul>
+                           <ul class="infoList left">
+                              <li ng-if="!value.id">Game Closed</li>
+                              <li ng-if="value.id"><span>Game Start:</span>&nbsp;<span class="color01" id="CountDown_' + value.code %>"><time-item time="value.data[12]"></time-item></span></li>
+                           </ul>
+                           <br clear="all">
+                        </div>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <div class="tabbox_F" style="border-bottom: none">
+                        </div>
+                        <div style="display: block;">
+                           <table id="Table1" class="oddsTable" width="100%" cellpadding="0" cellspacing="0" border="0">
+                              <tbody>
+                                 <tr>
+                                    <th title="Next Over/Under">
+                                       <span style="width:69px;" class="text-ellipsis">Next O/U</span>
+                                    </th>
+                                    <th title="Next Lẻ/Chẵn" class="even">
+                                       <span style="width:59px;" class="text-ellipsis">Next O/E</span>
+                                    </th>
+                                    <th title="Next Combo [O/U 37.5, O/E]" colspan="2">
+                                       <span style="width:152px;" class="text-ellipsis">Next Combo<br>[O/U 37.5, O/E]</span>
+                                    </th>
+                                    <th ng-attr-id="<% 'l_next_HL_Header_' + value.code %>" title="Banh kế tiếp - High/Low" nowrap="nowrap" class="OddsDiv  even displayOff">
+                                       <span style="width:62px;text-align:center;" class="text-ellipsis">Next H/L</span>
+                                    </th>
+                                    <th title="Warrior" class="even none_rline displayOn">
+                                       <span style="width:62px;" class="text-ellipsis">Warrior</span>
+                                    </th>
+                                 </tr>
+                              </tbody>
+                              <tbody>
+                                 <tr class="live" onmouseover="this.className='trbgov';" onmouseout="this.className='live';">
+                                    <td height="34">
+                                       <div class="line_divL HdpGoalClass">
+                                          <span class="displayOn" title="37.5">37.5</span><br>
+                                          <span title="Xỉu">u</span>
+                                       </div>
+                                       <div class="line_divR OddsDiv">
+                                          <a define-text='value.data[30]' class="UdrDogOddsClass pointer" ng-click="betBingo(value, 'game_next_ou', 30, value.data[30], 30, 'Next Tài/Xỉu', value.last_ball);">
+                                          <% value.data[30] %></a><br>
+                                          <a class="UdrDogOddsClass pointer" ng-click="betBingo(value, 'game_next_ou', 31, value.data[31], 31, 'Next Tài/Xỉu', value.last_ball);">
+                                          <% value.data[31] %></a><br>
+                                       </div>
+                                    </td>
+                                    <td>
+                                       <div class="line_divL HdpGoalClass">
+                                          <span title="Lẻ">O</span><br>
+                                          <span title="Chẵn">E</span>
+                                       </div>
+                                       <div class="line_divR OddsDiv ">
+                                          <a class="UdrDogOddsClass pointer" ng-click="betBingo(value, 'game_next_oe', 33, value.data[33], 33, 'Next Chẳn/lẽ', value.last_ball);">
+                                          <% value.data[33] %></a><br>
+                                          <a class="UdrDogOddsClass pointer" ng-click="betBingo(value, 'game_next_oe', 34, value.data[34], 34, 'Next Chẳn/lẽ', value.last_ball);">
+                                          <% value.data[34] %></a><br>
+                                       </div>
+                                    </td>
+                                    <td style="width:125px;" class="none_rline">
+                                       <div class="line_divL HdpGoalClass">
+                                          <span title="Tài/Lẻ">O/O</span><br>
+                                          <span title="Tài/Chẵn">O/E</span>
+                                       </div>
+                                       <div class="line_divR OddsDiv ">
+                                          <a class="UdrDogOddsClass pointer" ng-click="betBingo(value, 'game_next_combo', 43, value.data[43], 43, 'Next Combo', value.last_ball);">
+                                          <% value.data[43] %></a><br>
+                                          <a class="UdrDogOddsClass pointer" ng-click="betBingo(value, 'game_next_combo', 45, value.data[45], 45, 'Next Combo', value.last_ball);">
+                                          <% value.data[45] %></a><br>
+                                       </div>
+                                    </td>
+                                    <td style="width:125px;">
+                                       <div class="line_divL HdpGoalClass">
+                                          <span title="Xỉu/Lẻ">u/O</span><br>
+                                          <span title="Xỉu/Chẵn">u/E</span>
+                                       </div>
+                                       <div class="line_divR OddsDiv ">
+                                          <a class="UdrDogOddsClass pointer" ng-click="betBingo(value, 'game_next_combo', 44, value.data[44], 44, 'Next Combo', value.last_ball);">
+                                          <% value.data[44] %></a><br>
+                                          <a class="UdrDogOddsClass pointer" ng-click="betBingo(value, 'game_next_combo', 46, value.data[46], 46, 'Next Combo', value.last_ball);">
+                                          <% value.data[46] %></a><br>
+                                       </div>
+                                    </td>
+                                    <td ng-attr-id="<% 'l_next_HL_' + value.code %>" class="displayOff">
+                                       <div class="line_divL HdpGoalClass">
+                                          <span title=""></span><br>
+                                          <span title="Low"></span>
+                                       </div>
+                                       <div class="line_divR OddsDiv ">
+                                          <a class="UdrDogOddsClass" href="javascript:betBingo('0','27225822','','h','',87);">
+                                          </a><br>
+                                          <a class="UdrDogOddsClass" href="javascript:betBingo('0','27225822','','a','',87);">
+                                          </a><br>
+                                       </div>
+                                    </td>
+                                    <td class="displayOn">
+                                       <div class="line_divL HdpGoalClass">
+                                          <span title="2nd">2nd</span><br>
+                                          <span title="3rd">3rd</span>
+                                       </div>
+                                       <div class="line_divR OddsDiv ">
+                                          <a class="UdrDogOddsClass" href="javascript:betBingo('0','27225822','166028179','h','0.93',88);">
+                                          <% value.data[37] %></a><br>
+                                          <a class="UdrDogOddsClass" href="javascript:betBingo('0','27225822','166028179','a','0.93',88);">
+                                          <% value.data[38] %></a><br>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <div class="tabbox_F">
+                        </div>
+                        <div class="displayOn">
+                           <table width="100%" border="0" cellspacing="0" cellpadding="0" class="oddsTable numberGroup inlive">
+                              <tbody>
+                                 <tr>
+                                    <th nowrap="nowrap">
+                                       <font title="Number Wheel">Number Wheel</font>
+                                    </th>
+                                 </tr>
+                              </tbody>
+                              <tbody>
+                                 <tr>
+                                    <td class="tab_bg">
+                                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tbody>
+                                             <tr class="trbg">
+                                                <td height="35" class="tabt_unL tabt_unT">
+                                                   &nbsp;
+                                                </td>
+                                                <td ng-attr-id="<% 'l_4_1_' + value.code %>" height="35" class="tabt_unR live" onmousemove="BingoMouseMove(this);" onmouseout="BingoMouseOut(this);" ng-click="betBingo(value, 'game_wheel', 74, value.data[74], 74, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[74] %>
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_4_2_' + value.code %>" class="tabt_unR liveligh" onmousemove="BingoMouseMove(this);" onmouseout="BingoMouseOut(this);" ng-click="betBingo(value, 'game_wheel', 75, value.data[75], 75, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[75] %>
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_4_3_' + value.code %>" class="tabt_unR live " onmousemove="BingoMouseMove(this);" onmouseout="BingoMouseOut(this);" ng-click="betBingo(value, 'game_wheel', 76, value.data[76], 76, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[76] %>
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_4_4_' + value.code %>" class="tabt_unR liveligh " onmousemove="BingoMouseMove(this);" onmouseout="BingoMouseOut(this);" ng-click="betBingo(value, 'game_wheel', 77, value.data[77], 77, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[77] %>
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_4_5_' + value.code %>" class="live " 
+                                                   onmousemove="BingoMouseMove(this);"
+                                                   onmouseout="BingoMouseOut(this);"
+                                                   ng-click="betBingo(value, 'game_wheel', 78, value.data[78], 78, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[78] %>
+                                                   </div>
+                                                </td>
+                                                <td colspan="2" class="tabt_unR tabt_unT">
+                                                   <div class="ball-current UdrDogOddsClass ">
+                                                      <span>Single Ball</span>
+                                                      <span><% value.data[80] %></span>
+                                                   </div>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td ng-attr-id="<% 'l_1_1_' + value.code %>" width="90" class="live Odds_Upd statusChanged" onmousemove="BingoMouseMove(this);" onmouseout="BingoMouseOut(this);" ng-click="betBingo(value, 'game_wheel', 48, value.data[48], 48, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[48] %>
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_1_' + value.code %>" class="ball tabt_L tabt_T"
+                                                   ng-click="betBingo(value, 'game_wheel', 80, value.data[80], 80, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[80] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 1)}">
+                                                      1
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_2_' + value.code %>" class="ball tabt_T even" 
+                                                   ng-click="betBingo(value, 'game_wheel', 81, value.data[81], 81, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[81] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 2)}">
+                                                      2
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_3_' + value.code %>" class="ball tabt_T  " 
+                                                    ng-click="betBingo(value, 'game_wheel', 82, value.data[82], 82, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[82] %>
+                                                   </div>
+                                                   <div class="num" ng-class="{'on': checkOn(value, 3)}">
+                                                      3
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_4_' + value.code %>" class="ball tabt_T even" ng-click="betBingo(value, 'game_wheel', 83, value.data[83], 83, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[83] %>
+                                                   </div>
+                                                   <div class="num" ng-class="{'on': checkOn(value, 4)}">
+                                                      4
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_5_' + value.code %>" class="ball tabt_R tabt_T" ng-click="betBingo(value, 'game_wheel', 84, value.data[84], 84, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[84] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 5)}">
+                                                      5
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_2_1_' + value.code %>" rowspan="3" width="90" class="live " onmousemove="BingoMouseMove(this);" onmouseout="BingoMouseOut(this);" ng-click="betBingo(value, 'game_wheel', 64, value.data[64], 64, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[64] %>
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_3_1_' + value.code %>" rowspan="5" width="90" class="live " onmousemove="BingoMouseMove(this);" onmouseout="BingoMouseOut(this);" ng-click="betBingo(value, 'game_wheel', 70, value.data[70], 70, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[70] %>
+                                                   </div>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td ng-attr-id="<% 'l_1_2_' + value.code %>" class="liveligh " onmousemove="BingoMouseMove(this);" onmouseout="BingoMouseOut(this);" ng-click="betBingo(value, 'game_wheel', 49, value.data[49], 49, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[49] %>
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_6_' + value.code %>" class="ball tabt_L  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_6_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_6_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 85, value.data[85], 85, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[85] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 6)}">
+                                                      6
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_7_' + value.code %>" class="ball even  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_7_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_7_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 86, value.data[86], 86, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[86] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 7)}">
+                                                      7
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_8_' + value.code %>" class="ball  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_8_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_8_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 87, value.data[87], 87, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[87] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 8)}">
+                                                      8
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_9_' + value.code %>" class="ball even  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_9_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_9_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 88, value.data[88], 88, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[88] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 9)}">
+                                                      9
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_10_' + value.code %>" class="ball tabt_R  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_10_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_10_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 89, value.data[89], 89, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[89] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 10)}">
+                                                      10
+                                                   </div>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td ng-attr-id="<% 'l_1_3_' + value.code %>" class="live " onmousemove="BingoMouseMove(this);" onmouseout="BingoMouseOut(this);" ng-click="betBingo(value, 'game_wheel', 50, value.data[50], 50, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[50] %>
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_11_' + value.code %>" class="ball tabt_L  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_11_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_11_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 90, value.data[90], 90, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[90] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 11)}">
+                                                      11
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_12_' + value.code %>" class="ball even  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_12_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_12_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 91, value.data[91], 91, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[91] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 12)}">
+                                                      12
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_13_' + value.code %>" class="ball  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_13_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_13_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 92, value.data[92], 92, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[92] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 13)}">
+                                                      13
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_14_' + value.code %>" class="ball even  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_14_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_14_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 93, value.data[93], 93, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[93] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 14)}">
+                                                      14
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_15_' + value.code %>" class="ball tabt_R  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_15_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_15_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 94, value.data[94], 94, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[94] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 15)}">
+                                                      15
+                                                   </div>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td ng-attr-id="<% 'l_1_4_' + value.code %>" class="liveligh " onmousemove="BingoMouseMove(this);" onmouseout="BingoMouseOut(this);" ng-click="betBingo(value, 'game_wheel', 51, value.data[51], 51, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[51] %>
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_16_' + value.code %>" class="ball tabt_L  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_16_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_16_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 95, value.data[95], 95, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[95] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 16)}">
+                                                      16
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_17_' + value.code %>" class="ball even  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_17_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_17_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 96, value.data[96], 96, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[96] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 17)}">
+                                                      17
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_18_' + value.code %>" class="ball  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_18_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_18_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 97, value.data[97], 97, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[97] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 18)}">
+                                                      18
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_19_' + value.code %>" class="ball even  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_19_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_19_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 98, value.data[98], 98, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[98] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 19)}">
+                                                      19
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_20_' + value.code %>" class="ball tabt_R  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_20_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_20_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 99, value.data[99], 99, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[99] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 20)}">
+                                                      20
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_2_2_' + value.code %>" rowspan="3" class="liveligh " onmousemove="BingoMouseMove(this);" onmouseout="BingoMouseOut(this);" ng-click="betBingo(value, 'game_wheel', 65, value.data[65], 65, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[65] %>
+                                                   </div>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td ng-attr-id="<% 'l_1_5_' + value.code %>" class="live " onmousemove="BingoMouseMove(this);" onmouseout="BingoMouseOut(this);" ng-click="betBingo(value, 'game_wheel', 52, value.data[52], 52, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[52] %>
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_21_' + value.code %>" class="ball tabt_L  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_21_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_21_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 100, value.data[100], 100, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[100] %>
+                                                   </div>
+                                                   <div class="num" ng-class="{'on': checkOn(value, 21)}">
+                                                      21
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_22_' + value.code %>" class="ball even  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_22_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_22_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 101, value.data[101], 101, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[101] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 22)}">
+                                                      22
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_23_' + value.code %>" class="ball  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_23_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_23_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 102, value.data[102], 102, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[102] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 23)}">
+                                                      23
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_24_' + value.code %>" class="ball even  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_24_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_24_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 103, value.data[103], 103, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[103] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 24)}">
+                                                      24
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_25_' + value.code %>" class="ball tabt_R  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_25_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_25_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 104, value.data[104], 104, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[104] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 25)}">
+                                                      25
+                                                   </div>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td ng-attr-id="<% 'l_1_6_' + value.code %>" class="liveligh " onmousemove="BingoMouseMove(this);" onmouseout="BingoMouseOut(this);" ng-click="betBingo(value, 'game_wheel', 53, value.data[53], 53, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[53] %>
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_26_' + value.code %>" class="ball tabt_L  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_26_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_26_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 105, value.data[105], 105, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[105] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 26)}">
+                                                      26
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_27_' + value.code %>" class="ball even  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_27_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_27_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 106, value.data[106], 106, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[106] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 27)}">
+                                                      27
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_28_' + value.code %>" class="ball  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_28_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_28_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 107, value.data[107], 107, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[107] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 28)}">
+                                                      28
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_29_' + value.code %>" class="ball even  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_29_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_29_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 108, value.data[108], 108, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[108] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 29)}">
+                                                      29
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_30_' + value.code %>" class="ball tabt_R  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_30_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_30_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 109, value.data[109], 109, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds">
+                                                      <% value.data[109] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 30)}">
+                                                      30
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_3_2_' + value.code %>" rowspan="5" class="liveligh " onmousemove="BingoMouseMove(this);" onmouseout="BingoMouseOut(this);" ng-click="betBingo(value, 'game_wheel', 71, value.data[71], 71, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[71] %>
+                                                   </div>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td ng-attr-id="<% 'l_1_7_' + value.code %>" class="live " onmousemove="BingoMouseMove(this);" onmouseout="BingoMouseOut(this);" ng-click="betBingo(value, 'game_wheel', 54, value.data[54], 54, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[54] %>
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_31_' + value.code %>" class="ball tabt_L  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_31_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_31_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 110, value.data[110], 110, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[110] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 31)}">
+                                                      31
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_32_' + value.code %>" class="ball even  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_32_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_32_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 111, value.data[111], 111, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[111] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 32)}">
+                                                      32
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_33_' + value.code %>" class="ball  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_33_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_33_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 112, value.data[112], 112, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[112] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 33)}">
+                                                      33
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_34_' + value.code %>" class="ball even  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_34_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_34_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 113, value.data[113], 113, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[113] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 34)}">
+                                                      34
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_35_' + value.code %>" class="ball tabt_R  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_35_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_35_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 114, value.data[114], 114, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[114] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 35)}">
+                                                      35
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_2_3_' + value.code %>" rowspan="3" class="live " onmousemove="BingoMouseMove(this);" onmouseout="BingoMouseOut(this);" ng-click="betBingo(value, 'game_wheel', 66, value.data[66], 66, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[66] %>
+                                                   </div>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td ng-attr-id="<% 'l_1_8_' + value.code %>" class="liveligh " onmousemove="BingoMouseMove(this);" onmouseout="BingoMouseOut(this);" ng-click="betBingo(value, 'game_wheel', 55, value.data[55], 55, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[55] %>
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_36_' + value.code %>" class="ball tabt_L  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_36_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_36_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 115, value.data[115], 115, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[115] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 36)}">
+                                                      36
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_37_' + value.code %>" class="ball even  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_37_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_37_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 116, value.data[116], 116, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[116] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 37)}">
+                                                      37
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_38_' + value.code %>" class="ball  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_38_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_38_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 117, value.data[117], 117, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[117] %>
+                                                   </div>
+                                                   <div class="num" ng-class="{'on': checkOn(value, 38)}">
+                                                      38
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_39_' + value.code %>" class="ball even  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_39_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_39_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 118, value.data[118], 118, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[118] %>
+                                                   </div>
+                                                   <div class="num" ng-class="{'on': checkOn(value, 39)}">
+                                                      39
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_40_' + value.code %>" class="ball tabt_R  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_40_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_40_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 119, value.data[119], 119, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[119] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 40)}">
+                                                      40
+                                                   </div>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td ng-attr-id="<% 'l_1_9_' + value.code %>" class="live " onmousemove="BingoMouseMove(this);" onmouseout="BingoMouseOut(this);" ng-click="betBingo(value, 'game_wheel', 56, value.data[56], 56, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[56] %>
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_41_' + value.code %>" class="ball tabt_L  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_41_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_41_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 120, value.data[120], 120, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[120] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 41)}">
+                                                      41
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_42_' + value.code %>" class="ball even  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_42_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_42_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 121, value.data[121], 121, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[121] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 42)}">
+                                                      42
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_43_' + value.code %>" class="ball  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_43_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_43_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 122, value.data[122], 122, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[122] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 43)}">
+                                                      43
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_44_' + value.code %>" class="ball even  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_44_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_44_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 123, value.data[123], 123, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[123] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 44)}">
+                                                      44
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_45_' + value.code %>" class="ball tabt_R  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_45_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_45_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 124, value.data[124], 124, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[124] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 45)}">
+                                                      45
+                                                   </div>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td ng-attr-id="<% 'l_1_10_' + value.code %>" class="liveligh " onmousemove="BingoMouseMove(this);" onmouseout="BingoMouseOut(this);" ng-click="betBingo(value, 'game_wheel', 57, value.data[57], 57, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[57] %>
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_46_' + value.code %>" class="ball tabt_L  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_46_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_46_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 125, value.data[125], 125, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[125] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 46)}">
+                                                      46
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_47_' + value.code %>" class="ball even  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_47_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_47_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 126, value.data[126], 126, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[126] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 47)}">
+                                                      47
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_48_' + value.code %>" class="ball  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_48_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_48_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 127, value.data[127], 127, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[127] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 48)}">
+                                                      48
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_49_' + value.code %>" class="ball even  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_49_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_49_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 128, value.data[128], 128, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[128] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 49)}">
+                                                      49
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_50_' + value.code %>" class="ball tabt_R  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_50_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_50_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 129, value.data[129], 129, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[129] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 50)}">
+                                                      50
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_2_4_' + value.code %>" rowspan="3" class="liveligh " onmousemove="BingoMouseMove(this);" onmouseout="BingoMouseOut(this);" ng-click="betBingo(value, 'game_wheel', 67, value.data[67], 67, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[67] %>
+                                                   </div>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td ng-attr-id="<% 'l_1_11_' + value.code %>" class="live " onmousemove="BingoMouseMove(this);" onmouseout="BingoMouseOut(this);" ng-click="betBingo(value, 'game_wheel', 58, value.data[58], 58, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[58] %>
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_51_' + value.code %>" class="ball tabt_L  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_51_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_51_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 130, value.data[130], 130, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[130] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 51)}">
+                                                      51
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_52_' + value.code %>" class="ball even  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_52_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_52_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 131, value.data[131], 131, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[131] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 52)}">
+                                                      52
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_53_' + value.code %>" class="ball  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_53_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_53_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 132, value.data[132], 132, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[132] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 53)}">
+                                                      53
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_54_' + value.code %>" class="ball even  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_54_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_54_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 133, value.data[133], 133, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[133] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 54)}">
+                                                      54
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_55_' + value.code %>" class="ball tabt_R  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_55_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_55_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 134, value.data[134], 134, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[134] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 55)}">
+                                                      55
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_3_3_' + value.code %>" rowspan="5" class="live tabt_B " onmousemove="BingoMouseMove(this);" onmouseout="BingoMouseOut(this);" ng-click="betBingo(value, 'game_wheel', 72, value.data[72], 72, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[72] %>
+                                                   </div>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td ng-attr-id="<% 'l_1_12_' + value.code %>" class="liveligh " onmousemove="BingoMouseMove(this);" onmouseout="BingoMouseOut(this);" ng-click="betBingo(value, 'game_wheel', 59, value.data[59], 59, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[59] %>
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_56_' + value.code %>" class="ball tabt_L  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_56_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_56_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 135, value.data[135], 135, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[135] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 56)}">
+                                                      56
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_57_' + value.code %>" class="ball even  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_57_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_57_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 136, value.data[136], 136, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[136] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 57)}">
+                                                      57
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_58_' + value.code %>" class="ball  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_58_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_58_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 137, value.data[137], 137, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[137] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 58)}">
+                                                      58
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_59_' + value.code %>" class="ball even  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_59_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_59_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 138, value.data[138], 138, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[138] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 59)}">
+                                                      59
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_60_' + value.code %>" class="ball tabt_R"
+                                                   ng-click="betBingo(value, 'game_wheel', 139, value.data[139], 139, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds">
+                                                      <% value.data[139] %>
+                                                   </div>
+                                                   <div class="num" ng-class="{'on': checkOn(value, 60)}">
+                                                      60
+                                                   </div>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td ng-attr-id="<% 'l_1_13_' + value.code %>" class="live " onmousemove="BingoMouseMove(this);" onmouseout="BingoMouseOut(this);" ng-click="betBingo(value, 'game_wheel', 60, value.data[60], 60, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[60] %>
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_61_' + value.code %>" class="ball tabt_L"
+                                                   ng-click="betBingo(value, 'game_wheel', 140, value.data[140], 140, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[140] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 61)}">
+                                                      61
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_62_' + value.code %>" class="ball even"
+                                                   ng-click="betBingo(value, 'game_wheel', 141, value.data[141], 141, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[141] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 62 )}">
+                                                      62
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_63_' + value.code %>" class="ball"
+                                                   ng-click="betBingo(value, 'game_wheel', 142, value.data[142], 142, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[142] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 63)}">
+                                                      63
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_64_' + value.code %>" class="ball even" ng-click="betBingo(value, 'game_wheel', 143, value.data[143], 143, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[143] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 64)}">
+                                                      64
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_65_' + value.code %>" class="ball tabt_R" ng-click="betBingo(value, 'game_wheel', 144, value.data[144], 144, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[144] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 65)}">
+                                                      65
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_2_5_' + value.code %>" rowspan="3" class="live tabt_B " onmousemove="BingoMouseMove(this);" onmouseout="BingoMouseOut(this);" ng-click="betBingo(value, 'game_wheel', 68, value.data[68], 68, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[68] %>
+                                                   </div>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td ng-attr-id="<% 'l_1_14_' + value.code %>" class="liveligh " onmousemove="BingoMouseMove(this);" onmouseout="BingoMouseOut(this);" ng-click="betBingo(value, 'game_wheel', 61, value.data[61], 61, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[61] %>
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_66_' + value.code %>" class="ball tabt_L  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_66_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_66_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 145, value.data[145], 145, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[145] %>
+                                                   </div>
+                                                   <div class="num" ng-class="{'on': checkOn(value, 66)}">
+                                                      66
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_67_' + value.code %>" class="ball even  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_67_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_67_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 146, value.data[146], 146, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[146] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 67)}">
+                                                      67
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_68_' + value.code %>" class="ball  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_68_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_68_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 147, value.data[147], 147, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[147] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 68)}">
+                                                      68
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_69_' + value.code %>" class="ball even  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_69_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_69_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 148, value.data[148], 148, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[148] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 69)}">
+                                                      69
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_70_' + value.code %>" class="ball tabt_R  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_70_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_70_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 149, value.data[149], 149, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[149] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 70)}">
+                                                      70
+                                                   </div>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td ng-attr-id="<% 'l_1_15_' + value.code %>" class="live tabt_B " onmousemove="BingoMouseMove(this);" onmouseout="BingoMouseOut(this);" ng-click="betBingo(value, 'game_wheel', 62, value.data[62], 62, 'Number Wheel', value.last_ball);">
+                                                   <div class="UdrDogOddsClass">
+                                                      <% value.data[62] %>
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_71_' + value.code %>" class="ball tabt_L tabt_B  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_71_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_71_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 150, value.data[150], 150, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[150] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 71)}">
+                                                      71
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_72_' + value.code %>" class="ball even tabt_B  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_72_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_72_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 151, value.data[151], 151, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[151] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 72)}">
+                                                      72
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_73_' + value.code %>" class="ball tabt_B  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_73_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_73_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 152, value.data[152], 152, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[152] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 73)}">
+                                                      73
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_74_' + value.code %>" class="ball even tabt_B  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_74_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_74_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 153, value.data[153], 153, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[153] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 74)}">
+                                                      74
+                                                   </div>
+                                                </td>
+                                                <td ng-attr-id="<% 'l_5_75_' + value.code %>" class="ball tabt_R tabt_B  " onmousemove="SingleNumberWheelMouseMove(this, 'l_5_75_' + value.code %>');" onmouseout="SingleNumberWheelMouseOut(this, 'l_5_75_' + value.code %>');" ng-click="betBingo(value, 'game_wheel', 154, value.data[154], 154, 'Number Wheel', value.last_ball);">
+                                                   <div class="ball-odds ">
+                                                      <% value.data[154] %>
+                                                   </div>
+                                                   <div class="num " ng-class="{'on': checkOn(value, 75)}">
+                                                      75
+                                                   </div>
+                                                </td>
+                                             </tr>
+                                          </tbody>
+                                       </table>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+      </tr>
+   </tbody>
+</table>

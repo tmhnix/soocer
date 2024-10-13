@@ -1,0 +1,1 @@
+<div id="footer">Copyright ©bong88.org 2014</div>

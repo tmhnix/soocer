@@ -1,0 +1,137 @@
+<div id="div_accountInfoFull" ng-show="show == 'full'">
+  <!--account information-->
+  <div id="account_allhard">
+   <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tbody>
+     <tr>
+      <td class="Tcolor01" height="20" style="cursor: pointer;">
+       <div id="divFullUserName">{{account.username}}</div>
+     </td>
+     <td valign="top" nowrap="nowrap" style="cursor: pointer;" ng-click="onMenuAccount('mini')">
+       <a  target="leftFrame" class="btnIcon right balance-open" title="My Account">
+         <span class="icon-arrow"></span>
+       </a>
+     </td>
+     <td valign="top" nowrap="nowrap" width="20" ng-click="loadInfo()">
+      <a ng-class="{'disable': accountSetting.loading}" name="btnRefresh" class="btnIcon right" title="Refresh">
+        <span class="icon-refresh"></span>
+      </a>
+   </td>
+ </tr>
+</tbody>
+</table>
+<div class="line"></div>
+<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tbody>
+   <tr>
+    <td height="20" align="left" title="Nickname">
+     <div class="text-ellipsis" style="max-width:80px;">Biệt danh</div>
+   </td>
+   <td align="right"><span id="txt_nickname">{{account.username}}</span></td>
+ </tr>
+</tbody>
+</table>
+</div>
+<div class="account_body">
+ <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tabstyle01">
+  <tbody>
+   <tr>
+    <th align="left" nowrap="nowrap" title="Số dư">
+     <div class="text-ellipsis" style="width:70px;">Số dư</div>
+   </th>
+   <td id="cashBalance" align="right" class="FavOddsClass" ng-class="{'UdrDogOddsClass': account.profit >= 0}"><span id="txt_cash">{{account.profit | numberPretty:2}}</span></td>
+ </tr>
+ <tr>
+  <th align="left" nowrap="nowrap" title="Chưa xử lý">
+   <div class="text-ellipsis" style="width:70px;">Chưa xử lý</div>
+ </th>
+ <td align="right"><span id="txt_outstanding">{{account.runing_amount_today | numberPretty:2}}</span>
+ </td>
+ <tr>
+  <th align="left" nowrap="nowrap" title="Chưa xử lý ngày trước">
+   <div class="text-ellipsis" style="width:80px;">Chưa xử lý tồn</div>
+ </th>
+ <td align="right"><span id="txt_outstanding">{{account.runing_amount_not_today | numberPretty:2}}</span>
+ </td>
+</tr>
+<tr>
+  <th align="left" nowrap="nowrap" title="Net Position">
+   <a title="Net Position Help"><span class="iconOdds help right" style="margin-top: 3px;"></span></a>
+   <div class="text-ellipsis" style="width:60px;">Net Position</div>
+ </th>
+ <td align="right"><span id="txt_netposition">0.00</span></td>
+</tr>
+<tr>
+  <th align="left" nowrap="nowrap" title="Hạn Mức">
+   <div class="text-ellipsis" style="width:70px;">Hạn Mức</div>
+ </th>
+ <td align="right"><span id="txt_betcredit">{{account.wallet | numberPretty:2}}</span></td>
+</tr>
+<tr>
+  <th align="left" nowrap="nowrap" title="Hạn Mức Tín Dụng">
+   <div class="text-ellipsis" style="width:70px;">Hạn Mức Tín Dụng</div>
+ </th>
+ <td align="right"><span id="txt_credit">{{account.credit_line | numberPretty:2}}</span></td>
+</tr>
+<tr>
+  <th colspan="2" align="left" title="Truy cập gần nhất">
+   <div class="text-ellipsis" style="width:160px;">Truy cập gần nhất</div>
+ </th>
+</tr>
+<tr>
+  <td colspan="2"><span id="txt_login">{{account.last_time_login}}</span></td>
+</tr>
+<tr>
+  <th colspan="2" align="left" title="Giao Dịch Gần Nhất">
+   <div class="text-ellipsis" style="width:160px;">Giao Dịch Gần Nhất</div>
+ </th>
+</tr>
+<tr>
+  <td colspan="2"><span id="txt_transaction">{{account.last_time_bet}}</span></td>
+</tr>
+<!-- <tr>
+  <th colspan="2" align="left" title="Ngày Hết Hạn Của Mật Khẩu">
+   <div class="text-ellipsis" style="width:160px;">Ngày Hết Hạn Của Mật Khẩu</div>
+ </th>
+</tr>
+<tr>
+  <td colspan="2"><span id="txt_expassword">3/10/2018 12:17:50 AM</span></td>
+</tr> -->
+</tbody>
+</table>
+</div>
+<div class="account_foot"></div>
+</div>
+<div id="div_accountInfoMini" ng-show="show == 'mini'">
+  <span id="account_info"></span>
+  <div id="account_hard">
+   <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tbody>
+     <tr>
+      <td height="20" valign="top" class="Tcolor01" style="cursor: pointer;">
+       <div id="divMiniUserName">{{account.username}}</div>
+     </td>
+     <td valign="top" nowrap="nowrap" style="cursor: pointer;" ng-click="onMenuAccount('full')">
+       <a class="btnIcon right balance" title="My Account">
+        <span class="icon-arrow"></span></a>
+     </td>
+     <td valign="top" nowrap="nowrap" width="20" ng-click="loadInfo()">
+       <a name="btnRefresh" ng-class="{'disable': accountSetting.loading}" class="btnIcon right" title="Refresh"><span class="icon-refresh"></span>
+       </a>
+     </td>
+   </tr>
+ </tbody>
+</table>
+<div class="line"></div>
+<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tbody>
+   <tr>
+    <td height="20" valign="top" title="Bet Credit">
+     <div class="text-ellipsis" style="width:80px;">Hạn Mức</div>
+   </td>
+   <td align="right" nowrap="nowrap"><span id="AccCurrency_P">UT </span><span id="txt_betcreditInfo">{{account.wallet | numberPretty:2}}</span></td>
+ </tr>
+</tbody>
+</table>
+</div>
+</div>

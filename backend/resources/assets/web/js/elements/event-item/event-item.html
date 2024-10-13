@@ -1,0 +1,118 @@
+<tr ng-class="{'live displayOn': type == 'inplay', 'bgcpe displayOn': type !== 'inplay', 'liveligh': event.key%2==0 && type == 'inplay', 'bgcpe bgcpelight': event.key%2==0 && type !== 'inplay'}" >
+   <td rowspan="2" class="text_time" ng-if="type!=='inplay'">
+      <p define-text="event.ss" ng-bind-html="event.time | to_trusted"></p>
+   </td>
+   <td rowspan="2" nowrap="nowrap" class="text_time" ng-if="type==='inplay'">
+      <b define-text="event.ss">{{event.ss}}</b>        
+      <div nowrap="nowrap" style="color:red">
+         <span class="displayOff" title="In Running"><b class="IsLive">IR</b></span>
+         <span class="displayOn">
+            <b class="LiveTime">{{event.time}} <small ng-show="event.timer.added != 0" style="color: black">+{{event.timer.added}}</small></b>
+            <span style="color:#566C9E">
+            </span>
+         </span>
+      </div>
+   </td>
+   <td rowspan="2" class="line_unR" valign="top">
+      <div class="FavTeamClass" ng-class="{'UdrDogTeamClass': !event.ft_hdp.handicap || event.ft_hdp.handicap_team == 'away'}">
+         <span class="D_liveinfoM_23883982_H" >{{::event.home}}
+         <img ng-repeat="(key, value) in [] | range:event.reds.home" class="code" border="0" src="https://ssl-1-1.bongcdn.com/template/public/images/RedCard.gif">
+         </span>
+      </div>
+      <div class="FavTeamClass" ng-class="{'UdrDogTeamClass': !event.ft_hdp.handicap || event.ft_hdp.handicap_team == 'home'}">
+         <span class="D_liveinfoM_23883982_A">{{::event.away}}
+         <img ng-repeat="(key, value) in [] | range:event.reds.away" class="code" border="0" src="https://ssl-1-1.bongcdn.com/template/public/images/RedCard.gif">
+      </span></div>
+      <div class="HdpGoalClass">Hòa</div>
+   </td>
+   <td align="right" rowspan="2" nowrap="nowrap">
+      <span class="displayOn">
+         <a title="Live Match" style="display:inline-block;" target="_blank" href="http://ls.1266366.com/index.aspx?clientid=846&flag=lc&language=en&clientmatchid={{event.event_id}}&t=S">
+            <span class="iconOdds soccer"></span>
+            <div id="lf23883982" style="display:none; position:absolute; float:right;"></div>
+         </a>
+         <a title="Add My Favorite"><span name="fav_0123883982" class="iconOdds favorite"></span></a>
+      </span>
+   </td>
+   <td valign="top" class="none_rline none_dline">
+      <div class="line_divL HdpGoalClass">
+         <br ng-if="event.ft_hdp.handicap_team == 'away'"/>
+         {{event.ft_hdp.handicap}}
+      </div>
+      <div class="line_divR OddsDiv">
+         <a class="UdrDogOddsClass pointer" define-text='event.ft_hdp.home_od' odd-kind='{{odd_kind}}' ng-click="onBet('Handicap', 'ft_hdp', 'home', event.ft_hdp.home_od)">{{event.ft_hdp.home_od | numberOdd:2}}</a><br>
+         <a class="UdrDogOddsClass pointer" define-text='event.ft_hdp.away_od' odd-kind='{{odd_kind}}' ng-click="onBet('Handicap', 'ft_hdp', 'away', event.ft_hdp.away_od)">{{event.ft_hdp.away_od | numberOdd:2}}</a><br>
+      </div>
+   </td>
+   <td valign="top" class="none_dline none_rline">
+      <div class="line_divL HdpGoalClass" visible='event.ft_ou.handicap'>
+         {{event.ft_ou.handicap}}
+         <br>u
+      </div>
+      <div class="line_divR OddsDiv">
+         <a class="UdrDogOddsClass pointer" define-text='event.ft_ou.over_od' odd-kind='{{odd_kind}}' ng-click="onBet('Tài/Xỉu', 'ft_ou', 'home', event.ft_ou.over_od)">{{event.ft_ou.over_od | numberOdd:2}}</a><br>
+         <a class="UdrDogOddsClass pointer" define-text='event.ft_ou.under_od' odd-kind='{{odd_kind}}' ng-click="onBet('Tài/Xỉu', 'ft_ou', 'away', event.ft_ou.under_od)">{{event.ft_ou.under_od | numberOdd:2}}</a><br>
+      </div>
+   </td>
+   <td rowspan="2" align="right" valign="top" class="tabt_R">
+      <div class="line_divL line_divR UdrDogOddsClass"> 
+         <a>{{event.ft_1x2.home_od | numberOdd:2}}</a><br>
+         <a>{{event.ft_1x2.away_od | numberOdd:2}}</a><br>
+         <a>{{event.ft_1x2.draw_od | numberOdd:2}}</a>
+      </div>
+   </td>
+   <td valign="top" class="none_rline none_dline" ng-class="{'hide-span': event.time_position > 2 && false}">
+      <div class="line_divL HdpGoalClass">
+         <br ng-if="event.hf_hdp.handicap_team == 'away'"/>
+         <span>{{event.hf_hdp.handicap}}</span>
+      </div>
+      <div class="line_divR OddsDiv ">
+          <a class="UdrDogOddsClass pointer" define-text='event.hf_hdp.home_od' odd-kind='{{odd_kind}}' ng-click="onBet('1H - Handicap', 'hf_hdp', 'home', event.hf_hdp.home_od)">
+          <span>{{event.hf_hdp.home_od | numberOdd:2}}</span>
+         </a><br>
+         <a class="UdrDogOddsClass pointer" define-text='event.hf_hdp.away_od' odd-kind='{{odd_kind}}' ng-click="onBet('1H - Handicap', 'hf_hdp', 'away', event.hf_hdp.away_od)"><span>{{event.hf_hdp.away_od | numberOdd:2}}
+         </span>
+         </a><br>
+      </div>
+   </td>
+   <td valign="top" class="none_dline none_rline" ng-class="{'hide-span': event.time_position > 2}">
+      <div class="line_divL HdpGoalClass" visible='event.hf_ou.handicap'>
+         <span>{{event.hf_ou.handicap}}
+         <br>u
+         </span>
+      </div>
+      <div class="line_divR OddsDiv">
+         <a class="UdrDogOddsClass pointer" define-text='event.hf_ou.over_od' odd-kind='{{odd_kind}}' ng-click="onBet('1H - Tài/Xỉu', 'hf_ou', 'home', event.hf_ou.over_od)">
+         <span>{{event.hf_ou.over_od | numberOdd:2}}</span>
+         </a><br>
+         <a class="UdrDogOddsClass pointer" define-text='event.hf_ou.under_od' odd-kind='{{odd_kind}}' ng-click="onBet('1H - Tài/Xỉu', 'hf_ou', 'away', event.hf_ou.under_od)">
+            <span>{{event.hf_ou.under_od | numberOdd:2}}</span>
+         </a>
+         <br>
+      </div>
+   </td>
+   <td rowspan="2" align="right" valign="top">
+      <div class="line_divL line_divR UdrDogOddsClass ">
+         <a>{{event.hf_1x2.home_od | numberOdd:2}}</a><br>
+         <a>{{event.hf_1x2.away_od | numberOdd:2}}</a><br>
+         <a>{{event.hf_1x2.draw_od | numberOdd:2}}</a>
+      </div>
+   </td>
+   <td rowspan="2" align="center" class="breakLine">
+      <span class="displayOn">
+      <a style="cursor:pointer" title="Score Map"><span class="iconOdds scoreMap"></span></a>
+      <a title="Statistic Information" href="http://ls.1266366.com/index.aspx?clientid=846&flag=ls&language=en&clientmatchid={{event.event_id}}" target="_blank"><span class="iconOdds stats"></span></a></span></td>
+</tr>
+<tr id="e_23883982_1_2" ng-class="{'live displayOn': type == 'inplay', 'bgcpe displayOn': type !== 'inplay', 'liveligh': event.key%2==0 && type == 'inplay', 'bgcpe bgcpelight': event.key%2==0 && type !== 'inplay'}">
+   <td colspan="2" align="center" class="none_rline none_lline none_tline">
+      <span class="displayOn">
+         <a href="#" class="en_Point displayOff" title="More Bet Types"><span style="width:20px"></span></a>
+         <a href="#" class="btn redBg iconfast displayOff" title="Fast Markets">Fast</a>
+         <a href="#" class="btn displayOff" title="SuperLive">SuperLive</a>
+      </span>
+   </td>
+   <td class="none_rline none_tline" colspan="2"></td>
+</tr>
+<tr>
+   <td class="moreBetType tag displayOff" colspan="10"></td>
+</tr>

@@ -1,0 +1,31 @@
+{
+    "private": true,
+    "scripts": {
+        "prod": "npx gulp --production",
+        "dev": "gulp watch",
+        "admin-dev": "gulp --gulpfile gulpfile-admin.js watch",
+        "admin-prod": "gulp --gulpfile gulpfile-admin.js --production",
+        "start": "php artisan serve",
+        "test": "./node_modules/.bin/jasmine --config=crawl/spec/support/jasmine.json",
+        "build": "npm run prod; npm run admin-prod",
+        "lint": "./node_modules/.bin/eslint crawl/**/*.js"
+    },
+    "devDependencies": {
+        "bootstrap-sass": "^3.3.7",
+        "eslint-config-standard": "^11.0.0-beta.0",
+        "eslint-plugin-import": "^2.8.0",
+        "eslint-plugin-node": "^5.2.1",
+        "eslint-plugin-promise": "^3.6.0",
+        "eslint-plugin-standard": "^3.0.1",
+        "gulp": "^3.9.1",
+        "jasmine": "^3.1.0",
+        "jquery": "^3.5.1",
+        "laravel-elixir": "^6.0.0-18",
+        "laravel-elixir-ngtemplatecache": "^0.3.1",
+        "laravel-elixir-rename": "^0.1.5",
+        "laravel-elixir-webpack-official": "^1.0.2"
+    },
+    "dependencies": {
+        "graceful-fs": "^4.2.8"
+    }
+}
